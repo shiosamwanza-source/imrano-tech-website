@@ -1,36 +1,615 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imrano Tech | Electronics</title>
-    <style>
-        body { font-family: sans-serif; background: #eef2f3; margin: 0; padding-bottom: 20px; }
-        .header { background: #0b3d2e; color: #fff; padding: 20px; text-align: center; }
-        .card { background: #fff; margin: 15px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .title { font-weight: bold; font-size: 1.2em; color: #0b3d2e; }
-        .btn { background: #00dfa2; display: block; text-align: center; padding: 10px; margin-top: 10px; border-radius: 5px; color: #000; text-decoration: none; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imrano Electronics Tech Ltd – Mwanza, Tanzania</title>
+  <meta name="description" content="Tanzania's premier electronics destination. CCTV security systems, solar solutions, smartphones, car batteries and home appliances. Based in Mwanza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="header">
-    <h1>Imrano Tech / Electronics Ltd</h1>
-</div>
+  <!-- NAVIGATION -->
+  <header class="nav-header" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-imrano">IMRANO</span><span class="logo-tech">TECH</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#security">Security</a>
+        <a href="#energy">Energy</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<div class="card">
-    <div class="title">💻 Laptop Pro 2026</div>
-    <p>Hali: Mpya | Garanti: Mwaka 2</p>
-    <p>Bei: Tsh 1,200,000</p>
-    <a href="#" class="btn">Agiza Sasa</a>
-</div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-circuit"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🇹🇿 Tanzania's #1 Electronics Brand</div>
+      <h1 class="hero-headline">
+        Power Your World<br/>
+        <span class="hero-accent">With Imrano Tech</span>
+      </h1>
+      <p class="hero-sub">Your ultimate destination for premium CCTV security, solar solutions, smartphones & home electronics — proudly serving Tanzania for over 20 years from Mwanza.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn-primary">Explore Our Collection</a>
+        <a href="#contact" class="btn-outline">Get Expert Advice</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Years Serving TZ</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">5000+</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">1 Year</span><span class="stat-label">Warranty</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-product-showcase">
+        <div class="showcase-ring outer-ring"></div>
+        <div class="showcase-ring inner-ring"></div>
+        <div class="showcase-center">
+          <div class="showcase-icon">⚡</div>
+        </div>
+        <div class="floating-card card-1">
+          <span class="fc-icon">📹</span>
+          <span>CCTV Systems</span>
+        </div>
+        <div class="floating-card card-2">
+          <span class="fc-icon">☀️</span>
+          <span>Solar Power</span>
+        </div>
+        <div class="floating-card card-3">
+          <span class="fc-icon">📱</span>
+          <span>Smartphones</span>
+        </div>
+        <div class="floating-card card-4">
+          <span class="fc-icon">🔋</span>
+          <span>Batteries</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-<div class="card">
-    <div class="title">📱 Smartphone X1</div>
-    <p>Hali: Mpya | Inapatikana rangi zote</p>
-    <p>Bei: Tsh 500,000</p>
-    <a href="#" class="btn">Agiza Sasa</a>
-</div>
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>🔥 FREE Installation on CCTV Systems above TZS 500,000</span>
+      <span>⚡ Imranostar AVR Voltage Regulators — 0.5KVA to 2.0KVA in stock</span>
+      <span>☀️ Complete Solar Kits available — off-grid and grid-tied solutions</span>
+      <span>📱 Latest smartphones — competitive prices in Mwanza</span>
+      <span>🔋 Car batteries & deep-cycle batteries — same-day delivery Mwanza</span>
+      <span>🛡️ 1-Year Warranty on all products — guaranteed</span>
+      <span>🔥 FREE Installation on CCTV Systems above TZS 500,000</span>
+      <span>⚡ Imranostar AVR Voltage Regulators — 0.5KVA to 2.0KVA in stock</span>
+      <span>☀️ Complete Solar Kits available — off-grid and grid-tied solutions</span>
+      <span>📱 Latest smartphones — competitive prices in Mwanza</span>
+    </div>
+  </div>
 
+  <!-- PRODUCT CATEGORIES -->
+  <section class="categories" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">What We Offer</span>
+        <h2 class="section-title">Our Product Categories</h2>
+        <p class="section-sub">Premium electronics and energy solutions engineered for East Africa's demands</p>
+      </div>
+      <div class="cat-grid">
+
+        <div class="cat-card cat-security" id="security">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">📹</div>
+          </div>
+          <h3>Security & Surveillance</h3>
+          <p>Discover ultimate protection with our premium CCTV camera systems. Safeguard your home or business effortlessly with professional-grade surveillance technology.</p>
+          <ul class="cat-items">
+            <li>HD & 4K IP Cameras</li>
+            <li>DVR & NVR Recording Systems</li>
+            <li>Night Vision Cameras</li>
+            <li>Complete CCTV Kits (4/8/16 Channel)</li>
+            <li>Coaxial & Cat6 Cables (Imranostar)</li>
+            <li>Professional Installation Service</li>
+          </ul>
+          <a href="#contact" class="cat-cta">Get Security Quote →</a>
+        </div>
+
+        <div class="cat-card cat-energy" id="energy">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">☀️</div>
+          </div>
+          <h3>Renewable Energy</h3>
+          <p>Power independence for homes and businesses across Tanzania. From solar panels to smart inverters — complete off-grid and hybrid energy systems.</p>
+          <ul class="cat-items">
+            <li>Monocrystalline Solar Panels</li>
+            <li>Complete Solar Home Kits</li>
+            <li>Imranostar AVR Stabilizers (0.5–2.0KVA)</li>
+            <li>Inverter Generators</li>
+            <li>Deep-Cycle Solar Batteries</li>
+            <li>Solar Charge Controllers</li>
+          </ul>
+          <a href="#solar-calc" class="cat-cta">Calculate Your Solar Needs →</a>
+        </div>
+
+        <div class="cat-card cat-phones">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">📱</div>
+          </div>
+          <h3>Smartphones & Gadgets</h3>
+          <p>Latest smartphones, wireless accessories, and smart gadgets. Competitive Mwanza prices with warranty-backed authenticity on every device.</p>
+          <ul class="cat-items">
+            <li>Android & iOS Smartphones</li>
+            <li>Wireless Mouse (Imranostar)</li>
+            <li>Notebook Power Adapters</li>
+            <li>Single LNB Satellite (Imranosat IT-100)</li>
+            <li>Laptop Accessories</li>
+            <li>Smart Home Gadgets</li>
+          </ul>
+          <a href="#contact" class="cat-cta">View Available Stock →</a>
+        </div>
+
+        <div class="cat-card cat-batteries">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">🔋</div>
+          </div>
+          <h3>Batteries & Power</h3>
+          <p>Reliable power storage for vehicles, solar systems, and industrial applications. Trusted brands with verified specifications for East Africa's climate.</p>
+          <ul class="cat-items">
+            <li>Car & Truck Batteries</li>
+            <li>Motorcycle Batteries</li>
+            <li>Deep-Cycle AGM Batteries</li>
+            <li>UPS Replacement Batteries</li>
+            <li>CCTV Power Supply (Imrano 9CH)</li>
+            <li>Battery Testing & Replacement</li>
+          </ul>
+          <a href="#contact" class="cat-cta">Check Battery Compatibility →</a>
+        </div>
+
+        <div class="cat-card cat-accessories">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">✂️</div>
+          </div>
+          <h3>Tools & Accessories</h3>
+          <p>Professional tools and accessories from trusted brands. From hairclipper kits to irrigation equipment — everything for the modern Tanzanian home and business.</p>
+          <ul class="cat-items">
+            <li>Imrano Professional Hairclipper 200/300</li>
+            <li>Electrical Tools & Testers</li>
+            <li>Irrigation Pumps & Equipment</li>
+            <li>Extension Cables & Sockets</li>
+            <li>Coaxial Cable Rolls (Imranostar)</li>
+            <li>Home Appliance Accessories</li>
+          </ul>
+          <a href="#contact" class="cat-cta">Browse Accessories →</a>
+        </div>
+
+        <div class="cat-card cat-appliances">
+          <div class="cat-icon-wrap">
+            <div class="cat-icon">🏠</div>
+          </div>
+          <h3>Home Appliances</h3>
+          <p>Quality home appliances built for Tanzania's environment. Energy-efficient models with full after-sales support from our expert technical team in Mwanza.</p>
+          <ul class="cat-items">
+            <li>Refrigerators & Freezers</li>
+            <li>Electric Fans & Air Coolers</li>
+            <li>Water Dispensers</li>
+            <li>Electric Irons & Kettles</li>
+            <li>Blenders & Kitchen Appliances</li>
+            <li>LED TVs & Sound Systems</li>
+          </ul>
+          <a href="#contact" class="cat-cta">Explore Appliances →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Best Sellers</span>
+        <h2 class="section-title">Featured Products</h2>
+      </div>
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-img cctv-img">
+            <div class="product-badge">Best Seller</div>
+            <div class="product-icon-large">📹</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Security</span>
+            <h4>HD CCTV Bullet Camera</h4>
+            <p>2MP Full HD, Night Vision 30m, Weatherproof IP66</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 85,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img avr-img">
+            <div class="product-badge new-badge">New</div>
+            <div class="product-icon-large">⚡</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Energy</span>
+            <h4>Imranostar AVR 1000VA</h4>
+            <p>Automatic Voltage Regulator, 110V/220V 50/60Hz, IC Powered</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 120,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img solar-img">
+            <div class="product-badge hot-badge">Hot Deal</div>
+            <div class="product-icon-large">☀️</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Solar</span>
+            <h4>Complete Solar Home Kit</h4>
+            <p>200W Panel + Battery + Inverter + Controller — plug & play</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 850,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img cctv-kit-img">
+            <div class="product-icon-large">🎥</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Security</span>
+            <h4>4-Channel CCTV Kit</h4>
+            <p>4 cameras + DVR + 1TB HDD + cables — complete system</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 450,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img avr-img2">
+            <div class="product-icon-large">🔌</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Energy</span>
+            <h4>Imranostar AVR 2000VA</h4>
+            <p>2.0KVA Heavy Duty Stabilizer, Digital Display, Fuse Protection</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 210,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img mouse-img">
+            <div class="product-icon-large">🖱️</div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Accessories</span>
+            <h4>Imranostar Wireless Mouse</h4>
+            <p>2.4GHz wireless, ergonomic design, 1600 DPI, USB receiver</p>
+            <div class="product-footer">
+              <span class="product-price">TZS 25,000</span>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLAR CALCULATOR -->
+  <section class="solar-calc" id="solar-calc">
+    <div class="container">
+      <div class="calc-wrapper">
+        <div class="calc-info">
+          <span class="section-eyebrow">Free Tool</span>
+          <h2>Solar Load Calculator</h2>
+          <p>Tell us your appliances and we'll recommend the perfect solar system for your home or business — completely free.</p>
+          <div class="calc-features">
+            <div class="cf"><span>✓</span> Off-grid & hybrid systems</div>
+            <div class="cf"><span>✓</span> Accurate sizing for Tanzania's climate</div>
+            <div class="cf"><span>✓</span> Instant product recommendations</div>
+          </div>
+        </div>
+        <div class="calc-form">
+          <h3>Enter Your Appliances</h3>
+          <div class="appliance-row">
+            <label>Lights (LED bulbs)</label>
+            <input type="number" id="lights" placeholder="e.g. 6" min="0" />
+            <span class="unit">× 9W each</span>
+          </div>
+          <div class="appliance-row">
+            <label>Fans</label>
+            <input type="number" id="fans" placeholder="e.g. 2" min="0" />
+            <span class="unit">× 60W each</span>
+          </div>
+          <div class="appliance-row">
+            <label>TV (32")</label>
+            <input type="number" id="tvs" placeholder="e.g. 1" min="0" />
+            <span class="unit">× 80W each</span>
+          </div>
+          <div class="appliance-row">
+            <label>Phone Chargers</label>
+            <input type="number" id="phones" placeholder="e.g. 4" min="0" />
+            <span class="unit">× 10W each</span>
+          </div>
+          <div class="appliance-row">
+            <label>Fridge</label>
+            <input type="number" id="fridge" placeholder="e.g. 1" min="0" />
+            <span class="unit">× 150W each</span>
+          </div>
+          <div class="appliance-row hours-row">
+            <label>Hours of use per day</label>
+            <input type="number" id="hours" placeholder="e.g. 8" min="1" max="24" value="8" />
+            <span class="unit">hours</span>
+          </div>
+          <button class="btn-primary calc-btn" onclick="calculateSolar()">Calculate My Solar Needs ⚡</button>
+          <div class="calc-result" id="calcResult"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IMRANO -->
+  <section class="why-us" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Why Choose Us</span>
+        <h2 class="section-title">The Imrano Difference</h2>
+        <p class="section-sub">Built on 20 years of trust in Mwanza — delivering quality electronics and energy solutions across Tanzania</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <h4>20+ Years Legacy</h4>
+          <p>Established since the early 2000s in Mwanza, we've built one of Tanzania's most trusted electronics and energy retail brands through consistent quality and fair pricing.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <h4>Own Brand Products</h4>
+          <p>Imranostar and Imrano branded products — from AVR stabilizers to coaxial cables to hairclipper kits — are engineered specifically for East African power conditions and climate.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <h4>1-Year Warranty</h4>
+          <p>Every product sold at Imrano Electronics carries a full one-year warranty. If it fails within 12 months under normal use, we fix it or replace it — no arguments.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">04</div>
+          <h4>Expert Installation</h4>
+          <p>Our certified technical team handles CCTV installation, solar system setup, and electrical work across Mwanza. Professional service from the people who sold you the system.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">05</div>
+          <h4>Mobile Payments</h4>
+          <p>Pay via M-Pesa, Tigo Pesa, Airtel Money, or HaloPesa. We accept all major Tanzanian mobile money platforms plus card payments for maximum convenience.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">06</div>
+          <h4>After-Sales Support</h4>
+          <p>Post-purchase technical support from our Mwanza team for all products. Call us, WhatsApp us, or visit our Lumumba store. We don't disappear after the sale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT METHODS -->
+  <section class="payments">
+    <div class="container">
+      <p class="pay-label">Accepted Payment Methods</p>
+      <div class="pay-grid">
+        <div class="pay-chip mpesa">M-Pesa</div>
+        <div class="pay-chip tigo">Tigo Pesa</div>
+        <div class="pay-chip airtel">Airtel Money</div>
+        <div class="pay-chip halo">HaloPesa</div>
+        <div class="pay-chip card">💳 Visa/Mastercard</div>
+        <div class="pay-chip cash">💵 Cash</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-eyebrow">Get In Touch</span>
+          <h2>Visit Us or Contact Our Team</h2>
+          <p>Our technical experts are ready to help you find the right security system, solar solution, or electronic product for your needs.</p>
+          <div class="contact-details">
+            <div class="cd-item">
+              <span class="cd-icon">📍</span>
+              <div>
+                <strong>Physical Store</strong>
+                <p>Mzambarauni, Lumumba Street<br/>Mwanza, Tanzania</p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <span class="cd-icon">📞</span>
+              <div>
+                <strong>Phone / WhatsApp</strong>
+                <p><a href="tel:+255698533107">+255 698 533 107</a></p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <span class="cd-icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:imranhussein55@gmail.com">imranhussein55@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <span class="cd-icon">🌐</span>
+              <div>
+                <strong>Website</strong>
+                <p>ImranoTech.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="soc-btn">Facebook</a>
+            <a href="#" class="soc-btn">Instagram</a>
+            <a href="#" class="soc-btn">TikTok</a>
+            <a href="#" class="soc-btn">X (Twitter)</a>
+          </div>
+          <p class="social-handle">@chapchapservices on all platforms</p>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>Send Us a Message</h3>
+          <div class="contact-form">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="e.g. Juma Hassan" />
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" placeholder="+255 7XX XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label>Email (optional)</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>What are you looking for?</label>
+              <select>
+                <option value="">Select a category...</option>
+                <option>CCTV Security System</option>
+                <option>Solar / Energy Solution</option>
+                <option>Smartphone or Gadget</option>
+                <option>Car Battery</option>
+                <option>Voltage Regulator / AVR</option>
+                <option>Home Appliance</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell us what you need — budget, quantity, location..." rows="4"></textarea>
+            </div>
+            <button class="btn-primary full-btn">Send Message via WhatsApp 📲</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="nl-inner">
+        <div class="nl-text">
+          <h3>Stay Connected</h3>
+          <p>Get exclusive deals, new product alerts, and solar tips delivered to your inbox</p>
+        </div>
+        <div class="nl-form">
+          <input type="email" placeholder="Enter your email address" />
+          <button class="btn-primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo footer-logo">
+            <span class="logo-imrano">IMRANO</span><span class="logo-tech">TECH</span>
+          </div>
+          <p>Tanzania's trusted electronics and energy solutions brand. Serving homes and businesses from Mwanza since 2000+.</p>
+          <div class="footer-social">
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">TT</a>
+            <a href="#">X</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Products</h5>
+          <ul>
+            <li><a href="#">CCTV Cameras</a></li>
+            <li><a href="#">Solar Systems</a></li>
+            <li><a href="#">Voltage Regulators</a></li>
+            <li><a href="#">Car Batteries</a></li>
+            <li><a href="#">Smartphones</a></li>
+            <li><a href="#">Home Appliances</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Imrano</a></li>
+            <li><a href="#">Our Brands</a></li>
+            <li><a href="#">Installation Services</a></li>
+            <li><a href="#">Warranty Policy</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Policies</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Imrano Electronics Tech Ltd. All rights reserved. | Mzambarauni, Lumumba, Mwanza, Tanzania</p>
+        <p class="footer-credit">+255 698 533 107 | imranhussein55@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I'm%20interested%20in%20your%20products" class="whatsapp-float" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp Us</span>
+  </a>
+
+  <script src="script.js"></script>
 </body>
 </html>
