@@ -2,26 +2,35 @@
 <html lang="sw">
 <head>
     <meta charset="UTF-8">
-    <title>Imrano Tech | Duka la Elektroniki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imrano Tech | Electronics</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; text-align: center; }
-        .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .card { background: white; padding: 20px; border-radius: 10px; width: 200px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        body { font-family: sans-serif; background: #eef2f3; margin: 0; padding-bottom: 20px; }
+        .header { background: #0b3d2e; color: #fff; padding: 20px; text-align: center; }
+        .card { background: #fff; margin: 15px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .title { font-weight: bold; font-size: 1.2em; color: #0b3d2e; }
+        .btn { background: #00dfa2; display: block; text-align: center; padding: 10px; margin-top: 10px; border-radius: 5px; color: #000; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1>Bidhaa Zetu</h1>
-    <div id="product-list" class="products">
-        <p>Inapakia bidhaa...</p>
-    </div>
-    
-    <script>
-        // Hapa ndipo mfumo utakapovuta bidhaa zako kutoka folder la 'products'
-        fetch('./products/')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('product-list').innerHTML = "<h3>Karibu kwenye duka letu! Ongeza bidhaa kupitia Admin Panel.</h3>";
-            });
-    </script>
+
+<div class="header">
+    <h1>Imrano Tech / Electronics Ltd</h1>
+</div>
+
+<div class="card">
+    <div class="title">💻 Laptop Pro 2026</div>
+    <p>Hali: Mpya | Garanti: Mwaka 2</p>
+    <p>Bei: Tsh 1,200,000</p>
+    <a href="#" class="btn">Agiza Sasa</a>
+</div>
+
+<div class="card">
+    <div class="title">📱 Smartphone X1</div>
+    <p>Hali: Mpya | Inapatikana rangi zote</p>
+    <p>Bei: Tsh 500,000</p>
+    <a href="#" class="btn">Agiza Sasa</a>
+</div>
+
 </body>
 </html>
