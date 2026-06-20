@@ -1,615 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imrano Electronics Tech Ltd – Mwanza, Tanzania</title>
-  <meta name="description" content="Tanzania's premier electronics destination. CCTV security systems, solar solutions, smartphones, car batteries and home appliances. Based in Mwanza." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Imrano Electronics Tech Ltd — Mwanza, Tanzania</title>
+<meta name="description" content="Tanzania's premier electronics destination. CCTV, Solar, Smartphones, Car Batteries. Mwanza."/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+:root{
+  --navy:#060c2e;--navy2:#0d1545;--navy3:#162060;
+  --pink:#e8006e;--pink2:#ff1a80;--pink-glow:rgba(232,0,110,0.3);
+  --cyan:#00d4ff;--gold:#ffd700;--green:#00e676;
+  --white:#fff;--off:#f0f4ff;--gray:#7b8ab8;--light:#ccd6f6;
+  --radius:14px;--rad-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#0d1545;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.5px;border:none;cursor:pointer;transition:all .25s}
+.btn-pink{background:linear-gradient(135deg,#e8006e,#ff1a80);color:#fff;box-shadow:0 6px 24px rgba(232,0,110,.4)}
+.btn-pink:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,0,110,.6)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:#e8006e;color:#e8006e}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(6,12,46,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:all .3s}
+nav.scrolled{background:rgba(6,12,46,.99);box-shadow:0 4px 40px rgba(0,0,0,.5)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.45rem;letter-spacing:1px;flex-shrink:0}
+.logo .wh{color:#fff}.logo .pk{color:#e8006e}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:rgba(255,255,255,.7);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#e8006e;transition:width .25s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:10px}
+.ic-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;position:relative}
+.ic-btn:hover{background:#e8006e;border-color:#e8006e}
+.cbadge{position:absolute;top:-4px;right:-4px;background:#e8006e;color:#fff;font-size:.6rem;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(145deg,#060c2e 0%,#0a1040 35%,#0f0530 70%,#060c2e 100%);position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 60px 60px;gap:40px}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(232,0,110,.2) 0%,transparent 65%);pointer-events:none;animation:glow 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.12) 0%,transparent 65%);pointer-events:none;animation:glow 8s ease-in-out infinite reverse}
+@keyframes glow{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:1}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
+.hero-left{position:relative;z-index:2}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(232,0,110,.2),rgba(255,26,128,.1));border:1px solid rgba(232,0,110,.4);color:#ff6eb0;padding:8px 20px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+.hero-h1{font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px}
+.grad{background:linear-gradient(135deg,#e8006e,#ff6b35,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{color:rgba(204,214,246,.85);font-size:1.05rem;line-height:1.75;max-width:500px;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-stats{display:flex;align-items:center}
+.st{text-align:center;padding:0 28px}.st:first-child{padding-left:0}
+.sn{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;background:linear-gradient(135deg,#fff,#ccd6f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.sl{font-size:.68rem;color:#7b8ab8;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+.sdiv{width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2),transparent)}
+.hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
+.orb{position:relative;width:400px;height:400px;display:flex;align-items:center;justify-content:center}
+.ring{position:absolute;border-radius:50%;border:1px solid}
+.r1{width:360px;height:360px;border-color:rgba(232,0,110,.28);animation:spin 25s linear infinite}
+.r2{width:270px;height:270px;border-color:rgba(0,212,255,.22);animation:spin 18s linear infinite reverse}
+.r3{width:180px;height:180px;border-color:rgba(232,0,110,.18);animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb-c{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#e8006e,#9c27b0,#00d4ff);display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 0 60px rgba(232,0,110,.5),0 0 120px rgba(232,0,110,.2);animation:og 4s ease-in-out infinite}
+@keyframes og{0%,100%{box-shadow:0 0 60px rgba(232,0,110,.5),0 0 120px rgba(232,0,110,.2)}50%{box-shadow:0 0 90px rgba(232,0,110,.8),0 0 160px rgba(232,0,110,.35)}}
+.fc{position:absolute;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:8px;color:#fff;font-size:.8rem;font-weight:600;font-family:'Montserrat',sans-serif;white-space:nowrap;animation:fl 4s ease-in-out infinite}
+.fc1{top:28px;right:24px;animation-delay:0s}.fc2{top:28px;left:24px;animation-delay:1.2s}
+.fc3{bottom:28px;right:24px;animation-delay:2.4s}.fc4{bottom:28px;left:24px;animation-delay:.6s}
+.fcd{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.fc1 .fcd,.fc3 .fcd{background:#e8006e}.fc2 .fcd,.fc4 .fcd{background:#00d4ff}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* TICKER */
+.ticker{background:linear-gradient(90deg,#b3005a,#e8006e,#ff1a80,#e8006e,#b3005a);background-size:300% 100%;animation:tbg 5s linear infinite;padding:11px 0;overflow:hidden}
+@keyframes tbg{0%{background-position:0%}100%{background-position:300%}}
+.t-track{display:flex;gap:60px;animation:tslide 35s linear infinite;white-space:nowrap}
+.t-track span{color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;flex-shrink:0}
+.t-track span::before{content:'★ ';opacity:.7}
+@keyframes tslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* SECTIONS */
+.sec{padding:96px 0}.con{max-width:1200px;margin:0 auto;padding:0 24px}
+.ey{display:inline-block;color:#e8006e;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:14px}
+.sh{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#060c2e;line-height:1.15;margin-bottom:14px}
+.ss{color:#7b8ab8;font-size:1rem;max-width:580px;line-height:1.7}
+.s-head{text-align:center;margin-bottom:56px}.s-head .ss{margin:0 auto}
+.bg-off{background:#f0f4ff}
+/* CATEGORIES */
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cat{background:#fff;border-radius:22px;padding:32px 26px;border:1px solid rgba(13,21,69,.07);transition:all .3s;position:relative;overflow:hidden}
+.cat::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:22px 22px 0 0;transition:opacity .3s;opacity:0}
+.cat:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(13,21,69,.12)}.cat:hover::after{opacity:1}
+.c-sec::after{background:linear-gradient(90deg,#e8006e,#ff6b35)}
+.c-en::after{background:linear-gradient(90deg,#ff9800,#ffd700)}
+.c-ph::after{background:linear-gradient(90deg,#2196f3,#00d4ff)}
+.c-bat::after{background:linear-gradient(90deg,#4caf50,#00e676)}
+.c-ac::after{background:linear-gradient(90deg,#9c27b0,#e8006e)}
+.c-ap::after{background:linear-gradient(90deg,#00bcd4,#2196f3)}
+.ci{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:18px}
+.c-sec .ci{background:rgba(232,0,110,.1);border:1px solid rgba(232,0,110,.2)}
+.c-en .ci{background:rgba(255,152,0,.1);border:1px solid rgba(255,152,0,.2)}
+.c-ph .ci{background:rgba(33,150,243,.1);border:1px solid rgba(33,150,243,.2)}
+.c-bat .ci{background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.2)}
+.c-ac .ci{background:rgba(156,39,176,.1);border:1px solid rgba(156,39,176,.2)}
+.c-ap .ci{background:rgba(0,188,212,.1);border:1px solid rgba(0,188,212,.2)}
+.cat h3{font-family:'Montserrat',sans-serif;font-size:1.08rem;font-weight:800;color:#060c2e;margin-bottom:10px}
+.cat p{color:#7b8ab8;font-size:.85rem;line-height:1.65;margin-bottom:18px}
+.cl li{font-size:.8rem;color:#444;padding:3px 0 3px 14px;position:relative}
+.cl li::before{content:'›';position:absolute;left:0;color:#e8006e;font-weight:700}
+.cl-link{display:inline-block;margin-top:18px;color:#e8006e;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;transition:letter-spacing .2s}
+.cl-link:hover{letter-spacing:.5px}
+/* PRODUCTS */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.prod{border-radius:22px;overflow:hidden;border:1px solid rgba(13,21,69,.08);transition:all .3s;background:#fff}
+.prod:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(13,21,69,.14)}
+.pi{height:190px;display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative}
+.p1{background:linear-gradient(145deg,#060c2e,#1a2580)}.p2{background:linear-gradient(145deg,#1a0530,#3d1268)}
+.p3{background:linear-gradient(145deg,#061a0c,#0e4020)}.p4{background:linear-gradient(145deg,#0c0a30,#250c60)}
+.p5{background:linear-gradient(145deg,#300a14,#6d1030)}.p6{background:linear-gradient(145deg,#0a1230,#1a2860)}
+.ptag{position:absolute;top:12px;left:12px;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px}
+.tb{background:#e8006e;color:#fff}.tn{background:#00bcd4;color:#fff}.th{background:#ff5722;color:#fff}
+.pb{padding:20px}.pcat{font-size:.68rem;font-weight:700;font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#e8006e}
+.pb h4{font-family:'Montserrat',sans-serif;font-size:.98rem;font-weight:800;color:#060c2e;margin:6px 0}
+.pb p{font-size:.8rem;color:#7b8ab8;line-height:1.55;margin-bottom:16px}
+.pf{display:flex;align-items:center;justify-content:space-between}
+.pp{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;color:#060c2e}
+.ab{background:linear-gradient(135deg,#e8006e,#ff1a80);color:#fff;border:none;padding:8px 16px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .2s}
+.ab:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(232,0,110,.4)}
+/* BRANDS */
+.brands{padding:60px 0;background:#f0f4ff;text-align:center}
+.bl{color:#7b8ab8;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:32px}
+.br{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+.bc{background:#fff;border:1px solid rgba(13,21,69,.1);border-radius:12px;padding:16px 32px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.1rem;transition:all .3s;cursor:default}
+.bc:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(13,21,69,.1)}
+.bc.bm{background:linear-gradient(135deg,#060c2e,#162060);color:#fff}
+.bc.bs{background:linear-gradient(135deg,#e8006e,#ff6b35);color:#fff}
+.bc.bsat{background:linear-gradient(135deg,#0d1545,#2196f3);color:#fff}
+/* SOLAR CALC */
+.calc-sec{background:linear-gradient(145deg,#060c2e 0%,#0d1545 50%,#0f0530 100%);position:relative;overflow:hidden}
+.calc-sec::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,0,110,.15),transparent 70%);pointer-events:none}
+.calc-sec::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(0,212,255,.08),transparent 70%);pointer-events:none}
+.cw{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;position:relative;z-index:1}
+.ci-info .sh{color:#fff}
+.ci-info p{color:rgba(204,214,246,.8);font-size:1rem;line-height:1.75;margin-bottom:28px}
+.chks{display:flex;flex-direction:column;gap:12px}
+.chk{display:flex;align-items:center;gap:10px;color:rgba(204,214,246,.8);font-size:.9rem}
+.chkd{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#e8006e,#ff6b35);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;color:#fff;font-weight:700}
+.cbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:36px;backdrop-filter:blur(12px)}
+.cbox h3{font-family:'Montserrat',sans-serif;color:#fff;font-size:1.15rem;font-weight:800;margin-bottom:24px}
+.ar{display:grid;grid-template-columns:1fr 72px 80px;gap:10px;align-items:center;margin-bottom:12px}
+.ar label{color:rgba(204,214,246,.8);font-size:.86rem}
+.ar input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:9px;color:#fff;font-size:.88rem;text-align:center;outline:none;transition:border .2s}
+.ar input:focus{border-color:#e8006e}
+.au{color:#7b8ab8;font-size:.72rem;text-align:right}
+.hs{border-top:1px solid rgba(255,255,255,.08);padding-top:14px;margin-top:4px}
+.cbf{width:100%;margin-top:20px;justify-content:center;font-size:.88rem}
+#calcRes{display:none;margin-top:20px;background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.25);border-radius:14px;padding:18px}
+#calcRes.show{display:block}
+#calcRes h4{color:#00e676;font-family:'Montserrat',sans-serif;font-size:.95rem;margin-bottom:10px}
+#calcRes p{color:rgba(204,214,246,.85);font-size:.83rem;line-height:1.8}
+#calcRes a{color:#00e676;font-weight:700}
+/* WHY */
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why{background:#fff;padding:30px 26px;border-radius:22px;border:1px solid rgba(13,21,69,.07);transition:all .3s}
+.why:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(13,21,69,.1)}
+.wnum{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,rgba(232,0,110,.35),rgba(255,107,53,.2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.why h4{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:#060c2e;margin-bottom:10px}
+.why p{color:#7b8ab8;font-size:.85rem;line-height:1.7}
+/* PAYMENTS */
+.pay{background:#060c2e;padding:52px 0}
+.pal{color:#7b8ab8;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;text-align:center;margin-bottom:22px}
+.par{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.pp2{padding:9px 22px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;border:1px solid}
+.pm{color:#4caf50;border-color:rgba(76,175,80,.4);background:rgba(76,175,80,.1)}
+.pt{color:#2196f3;border-color:rgba(33,150,243,.4);background:rgba(33,150,243,.1)}
+.pa{color:#f44336;border-color:rgba(244,67,54,.4);background:rgba(244,67,54,.1)}
+.ph{color:#e91e63;border-color:rgba(233,30,99,.4);background:rgba(233,30,99,.1)}
+.pv{color:#ffd700;border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.1)}
+.pc{color:#fff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
+/* CONTACT */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.ci2>p{color:#7b8ab8;margin-bottom:32px;line-height:1.75}
+.cds{display:flex;flex-direction:column;gap:20px;margin-bottom:32px}
+.cd{display:flex;gap:14px;align-items:flex-start}
+.cdic{width:46px;height:46px;border-radius:14px;background:#f0f4ff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:1px solid rgba(13,21,69,.08)}
+.cd strong{font-family:'Montserrat',sans-serif;font-size:.82rem;color:#060c2e;display:block;margin-bottom:3px}
+.cd p,.cd a{font-size:.9rem;color:#7b8ab8}.cd a:hover{color:#e8006e}
+.socr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.soc{background:#060c2e;color:#fff;padding:8px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;transition:all .2s}
+.soc:hover{background:#e8006e}
+.shan{color:#7b8ab8;font-size:.78rem}
+.fbox{background:#f0f4ff;border-radius:22px;padding:36px;border:1px solid rgba(13,21,69,.07)}
+.fbox h3{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:#060c2e;margin-bottom:24px}
+.fi{display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:#060c2e;letter-spacing:.3px}
+.fg input,.fg select,.fg textarea{padding:12px 16px;border:1px solid rgba(13,21,69,.12);border-radius:14px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;background:#fff;color:#060c2e;transition:all .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#e8006e;box-shadow:0 0 0 3px rgba(232,0,110,.12)}
+.fg textarea{resize:vertical}
+.wa-btn{background:linear-gradient(135deg,#25d366,#1da851)!important;box-shadow:0 6px 24px rgba(37,211,102,.3)!important;width:100%;justify-content:center}
+/* NEWSLETTER */
+.nl{background:linear-gradient(135deg,#0f0530,#060c2e);padding:72px 0}
+.nli{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.nlt h3{font-family:'Montserrat',sans-serif;font-size:1.7rem;font-weight:900;color:#fff;margin-bottom:8px}
+.nlt p{color:rgba(204,214,246,.7);font-size:.9rem}
+.nlf{display:flex;gap:12px}
+.nlf input{flex:1;min-width:240px;padding:13px 22px;border-radius:50px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.9rem;outline:none;transition:all .2s}
+.nlf input:focus{border-color:#e8006e}.nlf input::placeholder{color:#7b8ab8}
+/* FOOTER */
+footer{background:#030817;padding:64px 0 0}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px}
+.flt{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.4rem}
+.flt .wh{color:#fff}.flt .pk{color:#e8006e}
+.fb p{color:#7b8ab8;font-size:.84rem;line-height:1.75;margin:14px 0 22px;max-width:270px}
+.fso{display:flex;gap:8px}
+.fs2{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#ccd6f6;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.fs2:hover{background:#e8006e;border-color:#e8006e;color:#fff}
+.fcol h5{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:2px;margin-bottom:18px}
+.fcol ul{display:flex;flex-direction:column;gap:10px}
+.fcol a{color:#7b8ab8;font-size:.84rem;transition:color .2s}
+.fcol a:hover{color:#e8006e}
+.fbot{border-top:1px solid rgba(255,255,255,.05);padding:22px 0;text-align:center}
+.fbot p{color:#7b8ab8;font-size:.78rem;line-height:1.7}
+/* WA FLOAT */
+.waf{position:fixed;bottom:28px;right:28px;z-index:998;background:linear-gradient(135deg,#25d366,#1da851);color:#fff;padding:14px 20px;border-radius:50px;display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;box-shadow:0 8px 30px rgba(37,211,102,.45);animation:wap 3s ease-in-out infinite;transition:all .25s}
+.waf:hover{transform:scale(1.06);box-shadow:0 12px 40px rgba(37,211,102,.6)}
+@keyframes wap{0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.45)}50%{box-shadow:0 8px 50px rgba(37,211,102,.75)}}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:120px 40px 60px;text-align:center}
+  .hero-right{display:none}.hero-btns{justify-content:center}.hero-stats{justify-content:center}.hero-p{margin:0 auto 36px}
+  .cg,.wg{grid-template-columns:repeat(2,1fr)}.pg{grid-template-columns:repeat(2,1fr)}
+  .cw,.cgrid{grid-template-columns:1fr}.fg2{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(6,12,46,.98);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:flex}.cg,.pg,.wg{grid-template-columns:1fr}
+  .hero{padding:100px 20px 60px}.nli{flex-direction:column;text-align:center}
+  .nlf{flex-direction:column;width:100%}.nlf input{min-width:auto}
+  .fg2{grid-template-columns:1fr}.ar{grid-template-columns:1fr 60px}.au{display:none}
+  .hero-stats{flex-wrap:wrap;gap:16px}.sdiv{display:none}.st{padding:0 12px}
+  .waf span{display:none}.waf{padding:14px;border-radius:50%}
+}
+@media(max-width:480px){.hero-btns{flex-direction:column;align-items:center}.fbox{padding:24px}.cbox{padding:24px}}
+</style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <header class="nav-header" id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo">
-        <span class="logo-imrano">IMRANO</span><span class="logo-tech">TECH</span>
-      </a>
-      <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#security">Security</a>
-        <a href="#energy">Energy</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="search-btn" aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
-        <button class="cart-btn" aria-label="Cart">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-count">0</span>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="wh">IMRANO</span><span class="pk">TECH</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a><a href="#products">Products</a><a href="#security">Security</a>
+      <a href="#energy">Energy</a><a href="#about">About</a><a href="#contact">Contact</a>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="hero-grid-overlay"></div>
-      <div class="hero-circuit"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">🇹🇿 Tanzania's #1 Electronics Brand</div>
-      <h1 class="hero-headline">
-        Power Your World<br/>
-        <span class="hero-accent">With Imrano Tech</span>
-      </h1>
-      <p class="hero-sub">Your ultimate destination for premium CCTV security, solar solutions, smartphones & home electronics — proudly serving Tanzania for over 20 years from Mwanza.</p>
-      <div class="hero-ctas">
-        <a href="#products" class="btn-primary">Explore Our Collection</a>
-        <a href="#contact" class="btn-outline">Get Expert Advice</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Years Serving TZ</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">5000+</span><span class="stat-label">Happy Customers</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">1 Year</span><span class="stat-label">Warranty</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-product-showcase">
-        <div class="showcase-ring outer-ring"></div>
-        <div class="showcase-ring inner-ring"></div>
-        <div class="showcase-center">
-          <div class="showcase-icon">⚡</div>
-        </div>
-        <div class="floating-card card-1">
-          <span class="fc-icon">📹</span>
-          <span>CCTV Systems</span>
-        </div>
-        <div class="floating-card card-2">
-          <span class="fc-icon">☀️</span>
-          <span>Solar Power</span>
-        </div>
-        <div class="floating-card card-3">
-          <span class="fc-icon">📱</span>
-          <span>Smartphones</span>
-        </div>
-        <div class="floating-card card-4">
-          <span class="fc-icon">🔋</span>
-          <span>Batteries</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <span>🔥 FREE Installation on CCTV Systems above TZS 500,000</span>
-      <span>⚡ Imranostar AVR Voltage Regulators — 0.5KVA to 2.0KVA in stock</span>
-      <span>☀️ Complete Solar Kits available — off-grid and grid-tied solutions</span>
-      <span>📱 Latest smartphones — competitive prices in Mwanza</span>
-      <span>🔋 Car batteries & deep-cycle batteries — same-day delivery Mwanza</span>
-      <span>🛡️ 1-Year Warranty on all products — guaranteed</span>
-      <span>🔥 FREE Installation on CCTV Systems above TZS 500,000</span>
-      <span>⚡ Imranostar AVR Voltage Regulators — 0.5KVA to 2.0KVA in stock</span>
-      <span>☀️ Complete Solar Kits available — off-grid and grid-tied solutions</span>
-      <span>📱 Latest smartphones — competitive prices in Mwanza</span>
+    <div class="nav-right">
+      <button class="ic-btn" id="srchBtn" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="ic-btn" aria-label="Cart">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cbadge" id="cb">0</span>
+      </button>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
     </div>
   </div>
+</nav>
 
-  <!-- PRODUCT CATEGORIES -->
-  <section class="categories" id="products">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">What We Offer</span>
-        <h2 class="section-title">Our Product Categories</h2>
-        <p class="section-sub">Premium electronics and energy solutions engineered for East Africa's demands</p>
+<section class="hero" id="home">
+  <div class="grid-bg"></div>
+  <div class="hero-left">
+    <div class="h-badge">🇹🇿 &nbsp;Tanzania's #1 Electronics Brand</div>
+    <h1 class="hero-h1">Power Your World<br/><span class="grad">With Imrano Tech</span></h1>
+    <p class="hero-p">Your ultimate destination for premium CCTV security, solar solutions, smartphones &amp; home electronics — proudly serving Tanzania for over 20 years from Mwanza.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-pink">🛒 &nbsp;Explore Collection</a>
+      <a href="#contact" class="btn btn-ghost">📞 &nbsp;Get Expert Advice</a>
+    </div>
+    <div class="hero-stats">
+      <div class="st"><span class="sn">20+</span><span class="sl">Years Serving TZ</span></div>
+      <div class="sdiv"></div>
+      <div class="st"><span class="sn">5,000+</span><span class="sl">Happy Customers</span></div>
+      <div class="sdiv"></div>
+      <div class="st"><span class="sn">1 Year</span><span class="sl">Warranty</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="orb">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="orb-c">⚡</div>
+      <div class="fc fc1"><div class="fcd"></div>📹 CCTV Systems</div>
+      <div class="fc fc2"><div class="fcd"></div>☀️ Solar Power</div>
+      <div class="fc fc3"><div class="fcd"></div>📱 Smartphones</div>
+      <div class="fc fc4"><div class="fcd"></div>🔋 Batteries</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="t-track">
+    <span>FREE Installation on CCTV above TZS 500,000</span>
+    <span>Imranostar AVR Stabilizers — 0.5KVA to 2.0KVA in stock</span>
+    <span>Complete Solar Kits — off-grid &amp; grid-tied</span>
+    <span>Latest smartphones at competitive Mwanza prices</span>
+    <span>Car batteries &amp; deep-cycle — same-day Mwanza delivery</span>
+    <span>1-Year Warranty on ALL products</span>
+    <span>FREE Installation on CCTV above TZS 500,000</span>
+    <span>Imranostar AVR Stabilizers — 0.5KVA to 2.0KVA in stock</span>
+    <span>Complete Solar Kits — off-grid &amp; grid-tied</span>
+    <span>Latest smartphones at competitive Mwanza prices</span>
+  </div>
+</div>
+
+<section class="sec bg-off" id="products">
+  <div class="con">
+    <div class="s-head"><span class="ey">What We Offer</span><h2 class="sh">Our Product Categories</h2><p class="ss">Premium electronics and energy solutions engineered for East Africa's demands</p></div>
+    <div class="cg">
+      <div class="cat c-sec rev" id="security">
+        <div class="ci">📹</div><h3>Security &amp; Surveillance</h3>
+        <p>Ultimate protection with premium CCTV camera systems. Safeguard your home or business with professional-grade surveillance technology.</p>
+        <ul class="cl"><li>HD &amp; 4K IP Cameras</li><li>DVR &amp; NVR Recording Systems</li><li>Night Vision Cameras</li><li>Complete CCTV Kits (4/8/16 Channel)</li><li>Imranostar Coaxial Cables</li><li>Professional Installation</li></ul>
+        <a href="#contact" class="cl-link">Get Security Quote →</a>
       </div>
-      <div class="cat-grid">
-
-        <div class="cat-card cat-security" id="security">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">📹</div>
-          </div>
-          <h3>Security & Surveillance</h3>
-          <p>Discover ultimate protection with our premium CCTV camera systems. Safeguard your home or business effortlessly with professional-grade surveillance technology.</p>
-          <ul class="cat-items">
-            <li>HD & 4K IP Cameras</li>
-            <li>DVR & NVR Recording Systems</li>
-            <li>Night Vision Cameras</li>
-            <li>Complete CCTV Kits (4/8/16 Channel)</li>
-            <li>Coaxial & Cat6 Cables (Imranostar)</li>
-            <li>Professional Installation Service</li>
-          </ul>
-          <a href="#contact" class="cat-cta">Get Security Quote →</a>
-        </div>
-
-        <div class="cat-card cat-energy" id="energy">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">☀️</div>
-          </div>
-          <h3>Renewable Energy</h3>
-          <p>Power independence for homes and businesses across Tanzania. From solar panels to smart inverters — complete off-grid and hybrid energy systems.</p>
-          <ul class="cat-items">
-            <li>Monocrystalline Solar Panels</li>
-            <li>Complete Solar Home Kits</li>
-            <li>Imranostar AVR Stabilizers (0.5–2.0KVA)</li>
-            <li>Inverter Generators</li>
-            <li>Deep-Cycle Solar Batteries</li>
-            <li>Solar Charge Controllers</li>
-          </ul>
-          <a href="#solar-calc" class="cat-cta">Calculate Your Solar Needs →</a>
-        </div>
-
-        <div class="cat-card cat-phones">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">📱</div>
-          </div>
-          <h3>Smartphones & Gadgets</h3>
-          <p>Latest smartphones, wireless accessories, and smart gadgets. Competitive Mwanza prices with warranty-backed authenticity on every device.</p>
-          <ul class="cat-items">
-            <li>Android & iOS Smartphones</li>
-            <li>Wireless Mouse (Imranostar)</li>
-            <li>Notebook Power Adapters</li>
-            <li>Single LNB Satellite (Imranosat IT-100)</li>
-            <li>Laptop Accessories</li>
-            <li>Smart Home Gadgets</li>
-          </ul>
-          <a href="#contact" class="cat-cta">View Available Stock →</a>
-        </div>
-
-        <div class="cat-card cat-batteries">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">🔋</div>
-          </div>
-          <h3>Batteries & Power</h3>
-          <p>Reliable power storage for vehicles, solar systems, and industrial applications. Trusted brands with verified specifications for East Africa's climate.</p>
-          <ul class="cat-items">
-            <li>Car & Truck Batteries</li>
-            <li>Motorcycle Batteries</li>
-            <li>Deep-Cycle AGM Batteries</li>
-            <li>UPS Replacement Batteries</li>
-            <li>CCTV Power Supply (Imrano 9CH)</li>
-            <li>Battery Testing & Replacement</li>
-          </ul>
-          <a href="#contact" class="cat-cta">Check Battery Compatibility →</a>
-        </div>
-
-        <div class="cat-card cat-accessories">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">✂️</div>
-          </div>
-          <h3>Tools & Accessories</h3>
-          <p>Professional tools and accessories from trusted brands. From hairclipper kits to irrigation equipment — everything for the modern Tanzanian home and business.</p>
-          <ul class="cat-items">
-            <li>Imrano Professional Hairclipper 200/300</li>
-            <li>Electrical Tools & Testers</li>
-            <li>Irrigation Pumps & Equipment</li>
-            <li>Extension Cables & Sockets</li>
-            <li>Coaxial Cable Rolls (Imranostar)</li>
-            <li>Home Appliance Accessories</li>
-          </ul>
-          <a href="#contact" class="cat-cta">Browse Accessories →</a>
-        </div>
-
-        <div class="cat-card cat-appliances">
-          <div class="cat-icon-wrap">
-            <div class="cat-icon">🏠</div>
-          </div>
-          <h3>Home Appliances</h3>
-          <p>Quality home appliances built for Tanzania's environment. Energy-efficient models with full after-sales support from our expert technical team in Mwanza.</p>
-          <ul class="cat-items">
-            <li>Refrigerators & Freezers</li>
-            <li>Electric Fans & Air Coolers</li>
-            <li>Water Dispensers</li>
-            <li>Electric Irons & Kettles</li>
-            <li>Blenders & Kitchen Appliances</li>
-            <li>LED TVs & Sound Systems</li>
-          </ul>
-          <a href="#contact" class="cat-cta">Explore Appliances →</a>
-        </div>
-
+      <div class="cat c-en rev" id="energy">
+        <div class="ci">☀️</div><h3>Renewable Energy</h3>
+        <p>Power independence for homes and businesses across Tanzania. Complete off-grid and hybrid energy systems built for the African climate.</p>
+        <ul class="cl"><li>Monocrystalline Solar Panels</li><li>Complete Solar Home Kits</li><li>Imranostar AVR (0.5–2.0KVA)</li><li>Inverter Generators</li><li>Deep-Cycle Solar Batteries</li><li>Solar Charge Controllers</li></ul>
+        <a href="#solar-calc" class="cl-link">Calculate Solar Needs →</a>
+      </div>
+      <div class="cat c-ph rev">
+        <div class="ci">📱</div><h3>Smartphones &amp; Gadgets</h3>
+        <p>Latest smartphones, wireless accessories and smart gadgets at competitive Mwanza prices with warranty-backed authenticity.</p>
+        <ul class="cl"><li>Android &amp; iOS Smartphones</li><li>Imranostar Wireless Mouse</li><li>Notebook Power Adapters</li><li>Imranosat IT-100 Single LNB</li><li>Laptop Accessories</li><li>Smart Home Gadgets</li></ul>
+        <a href="#contact" class="cl-link">View Available Stock →</a>
+      </div>
+      <div class="cat c-bat rev">
+        <div class="ci">🔋</div><h3>Batteries &amp; Power</h3>
+        <p>Reliable power storage for vehicles, solar systems and industrial applications. Trusted brands verified for East Africa's climate.</p>
+        <ul class="cl"><li>Car &amp; Truck Batteries</li><li>Motorcycle Batteries</li><li>Deep-Cycle AGM Batteries</li><li>UPS Replacement Batteries</li><li>Imrano CCTV Power Supply 9CH</li><li>Battery Testing &amp; Replacement</li></ul>
+        <a href="#contact" class="cl-link">Check Battery Compatibility →</a>
+      </div>
+      <div class="cat c-ac rev">
+        <div class="ci">✂️</div><h3>Tools &amp; Accessories</h3>
+        <p>Professional tools and accessories from trusted Imrano brands. From hairclipper kits to electrical tools for the modern Tanzanian home.</p>
+        <ul class="cl"><li>Imrano Hairclipper 200/300 Series</li><li>Electrical Tools &amp; Testers</li><li>Irrigation Pumps &amp; Equipment</li><li>Extension Cables &amp; Sockets</li><li>Imranostar Coaxial Cable Rolls</li><li>CCTV Installation Tools</li></ul>
+        <a href="#contact" class="cl-link">Browse Accessories →</a>
+      </div>
+      <div class="cat c-ap rev">
+        <div class="ci">🏠</div><h3>Home Appliances</h3>
+        <p>Quality home appliances built for Tanzania's environment. Energy-efficient models with full after-sales support from our Mwanza team.</p>
+        <ul class="cl"><li>Refrigerators &amp; Freezers</li><li>Electric Fans &amp; Air Coolers</li><li>Water Dispensers</li><li>Electric Irons &amp; Kettles</li><li>Blenders &amp; Kitchen Appliances</li><li>LED TVs &amp; Sound Systems</li></ul>
+        <a href="#contact" class="cl-link">Explore Appliances →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURED PRODUCTS -->
-  <section class="featured">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Best Sellers</span>
-        <h2 class="section-title">Featured Products</h2>
+<section class="sec" style="background:#fff">
+  <div class="con">
+    <div class="s-head"><span class="ey">Best Sellers</span><h2 class="sh">Featured Products</h2><p class="ss">Top-selling electronics and energy solutions in Mwanza</p></div>
+    <div class="pg">
+      <div class="prod rev"><div class="pi p1"><span class="ptag tb">Best Seller</span>📹</div><div class="pb"><span class="pcat">Security</span><h4>HD CCTV Bullet Camera</h4><p>2MP Full HD, Night Vision 30m, Weatherproof IP66</p><div class="pf"><span class="pp">TZS 85,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+      <div class="prod rev"><div class="pi p2"><span class="ptag tn">New</span>⚡</div><div class="pb"><span class="pcat">Energy</span><h4>Imranostar AVR 1000VA</h4><p>Automatic Voltage Regulator, 110V/220V 50/60Hz, IC Powered</p><div class="pf"><span class="pp">TZS 120,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+      <div class="prod rev"><div class="pi p3"><span class="ptag th">Hot Deal</span>☀️</div><div class="pb"><span class="pcat">Solar</span><h4>Complete Solar Home Kit</h4><p>200W Panel + Battery + Inverter + Controller — plug &amp; play</p><div class="pf"><span class="pp">TZS 850,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+      <div class="prod rev"><div class="pi p4">🎥</div><div class="pb"><span class="pcat">Security</span><h4>4-Channel CCTV Kit</h4><p>4 cameras + DVR + 1TB HDD + cables — complete system</p><div class="pf"><span class="pp">TZS 450,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+      <div class="prod rev"><div class="pi p5">🔌</div><div class="pb"><span class="pcat">Energy</span><h4>Imranostar AVR 2000VA</h4><p>2.0KVA Heavy Duty Stabilizer, Digital Display, Fuse Protection</p><div class="pf"><span class="pp">TZS 210,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+      <div class="prod rev"><div class="pi p6">🖱️</div><div class="pb"><span class="pcat">Accessories</span><h4>Imranostar Wireless Mouse</h4><p>2.4GHz wireless, ergonomic, 1600 DPI, USB receiver</p><div class="pf"><span class="pp">TZS 25,000</span><button class="ab">+ Add to Cart</button></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="brands">
+  <p class="bl">Our Trusted Sub-Brands</p>
+  <div class="br"><div class="bc bm">🔌 IMRANO</div><div class="bc bs">⭐ IMRANOSTAR</div><div class="bc bsat">📡 IMRANOSAT</div></div>
+</div>
+
+<section class="sec calc-sec" id="solar-calc">
+  <div class="con">
+    <div class="cw">
+      <div class="ci-info">
+        <span class="ey">Free Tool</span>
+        <h2 class="sh">Solar Load Calculator</h2>
+        <p>Tell us your appliances and we'll recommend the perfect solar system — free, using Tanzania-specific sun data from Mwanza.</p>
+        <div class="chks">
+          <div class="chk"><div class="chkd">✓</div>Off-grid &amp; hybrid systems</div>
+          <div class="chk"><div class="chkd">✓</div>Accurate sizing for Tanzania's climate</div>
+          <div class="chk"><div class="chkd">✓</div>Instant panel, battery &amp; inverter sizing</div>
+          <div class="chk"><div class="chkd">✓</div>Free WhatsApp quote from our team</div>
+        </div>
       </div>
-      <div class="products-grid">
-
-        <div class="product-card">
-          <div class="product-img cctv-img">
-            <div class="product-badge">Best Seller</div>
-            <div class="product-icon-large">📹</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Security</span>
-            <h4>HD CCTV Bullet Camera</h4>
-            <p>2MP Full HD, Night Vision 30m, Weatherproof IP66</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 85,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img avr-img">
-            <div class="product-badge new-badge">New</div>
-            <div class="product-icon-large">⚡</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Energy</span>
-            <h4>Imranostar AVR 1000VA</h4>
-            <p>Automatic Voltage Regulator, 110V/220V 50/60Hz, IC Powered</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 120,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img solar-img">
-            <div class="product-badge hot-badge">Hot Deal</div>
-            <div class="product-icon-large">☀️</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Solar</span>
-            <h4>Complete Solar Home Kit</h4>
-            <p>200W Panel + Battery + Inverter + Controller — plug & play</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 850,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img cctv-kit-img">
-            <div class="product-icon-large">🎥</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Security</span>
-            <h4>4-Channel CCTV Kit</h4>
-            <p>4 cameras + DVR + 1TB HDD + cables — complete system</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 450,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img avr-img2">
-            <div class="product-icon-large">🔌</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Energy</span>
-            <h4>Imranostar AVR 2000VA</h4>
-            <p>2.0KVA Heavy Duty Stabilizer, Digital Display, Fuse Protection</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 210,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img mouse-img">
-            <div class="product-icon-large">🖱️</div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Accessories</span>
-            <h4>Imranostar Wireless Mouse</h4>
-            <p>2.4GHz wireless, ergonomic design, 1600 DPI, USB receiver</p>
-            <div class="product-footer">
-              <span class="product-price">TZS 25,000</span>
-              <button class="add-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
+      <div class="cbox">
+        <h3>⚡ Enter Your Appliances</h3>
+        <div class="ar"><label>LED Lights</label><input type="number" id="lights" placeholder="6" min="0"/><span class="au">× 9W each</span></div>
+        <div class="ar"><label>Fans</label><input type="number" id="fans" placeholder="2" min="0"/><span class="au">× 60W each</span></div>
+        <div class="ar"><label>TV (32")</label><input type="number" id="tvs" placeholder="1" min="0"/><span class="au">× 80W each</span></div>
+        <div class="ar"><label>Phone Chargers</label><input type="number" id="phones" placeholder="4" min="0"/><span class="au">× 10W each</span></div>
+        <div class="ar"><label>Fridge</label><input type="number" id="fridge" placeholder="1" min="0"/><span class="au">× 150W each</span></div>
+        <div class="ar hs"><label>Hours per day</label><input type="number" id="hours" placeholder="8" min="1" max="24" value="8"/><span class="au">hours</span></div>
+        <button class="btn btn-pink cbf" onclick="calcSolar()">Calculate My Solar Needs ⚡</button>
+        <div id="calcRes"><h4 id="resT"></h4><p id="resB"></p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SOLAR CALCULATOR -->
-  <section class="solar-calc" id="solar-calc">
-    <div class="container">
-      <div class="calc-wrapper">
-        <div class="calc-info">
-          <span class="section-eyebrow">Free Tool</span>
-          <h2>Solar Load Calculator</h2>
-          <p>Tell us your appliances and we'll recommend the perfect solar system for your home or business — completely free.</p>
-          <div class="calc-features">
-            <div class="cf"><span>✓</span> Off-grid & hybrid systems</div>
-            <div class="cf"><span>✓</span> Accurate sizing for Tanzania's climate</div>
-            <div class="cf"><span>✓</span> Instant product recommendations</div>
-          </div>
+<section class="sec bg-off" id="about">
+  <div class="con">
+    <div class="s-head"><span class="ey">Why Choose Us</span><h2 class="sh">The Imrano Difference</h2><p class="ss">Built on 20 years of trust in Mwanza — delivering quality across Tanzania</p></div>
+    <div class="wg">
+      <div class="why rev"><div class="wnum">01</div><h4>20+ Years Legacy</h4><p>Established in Mwanza since the early 2000s — one of Tanzania's most trusted electronics and energy retail brands through consistent quality and fair pricing.</p></div>
+      <div class="why rev"><div class="wnum">02</div><h4>Own Brand Products</h4><p>Imranostar and Imranosat branded products — from AVR stabilizers to coaxial cables — engineered specifically for East African power conditions and climate.</p></div>
+      <div class="why rev"><div class="wnum">03</div><h4>1-Year Warranty</h4><p>Every product sold at Imrano Electronics carries a full one-year warranty. If it fails within 12 months under normal use, we fix it or replace it — no arguments.</p></div>
+      <div class="why rev"><div class="wnum">04</div><h4>Expert Installation</h4><p>Our certified technical team handles CCTV installation, solar system setup, and electrical work across Mwanza. Professional service from the people who sold you the system.</p></div>
+      <div class="why rev"><div class="wnum">05</div><h4>Mobile Payments</h4><p>Pay via M-Pesa, Tigo Pesa, Airtel Money, or HaloPesa. All major Tanzanian mobile money platforms plus card payments for maximum convenience.</p></div>
+      <div class="why rev"><div class="wnum">06</div><h4>After-Sales Support</h4><p>Post-purchase technical support from our Mwanza team for all products. Call us, WhatsApp us, or visit our Lumumba store. We don't disappear after the sale.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="pay">
+  <div class="con">
+    <p class="pal">Accepted Payment Methods</p>
+    <div class="par">
+      <div class="pp2 pm">📱 M-Pesa</div><div class="pp2 pt">📱 Tigo Pesa</div>
+      <div class="pp2 pa">📱 Airtel Money</div><div class="pp2 ph">📱 HaloPesa</div>
+      <div class="pp2 pv">💳 Visa / Mastercard</div><div class="pp2 pc">💵 Cash</div>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="contact" style="background:#fff">
+  <div class="con">
+    <div class="cgrid">
+      <div class="ci2">
+        <span class="ey">Get In Touch</span>
+        <h2 class="sh">Visit Us or Contact<br/>Our Expert Team</h2>
+        <p>Our technical experts are ready to help you find the right security system, solar solution, or electronic product for your needs.</p>
+        <div class="cds">
+          <div class="cd"><div class="cdic">📍</div><div><strong>Physical Store</strong><p>Mzambarauni, Lumumba Street, Mwanza, Tanzania</p></div></div>
+          <div class="cd"><div class="cdic">📞</div><div><strong>Phone / WhatsApp</strong><p><a href="tel:+255698533107">+255 698 533 107</a></p></div></div>
+          <div class="cd"><div class="cdic">✉️</div><div><strong>Email</strong><p><a href="mailto:imranhussein55@gmail.com">imranhussein55@gmail.com</a></p></div></div>
+          <div class="cd"><div class="cdic">🌐</div><div><strong>Website</strong><p>ImranoTech.com</p></div></div>
         </div>
-        <div class="calc-form">
-          <h3>Enter Your Appliances</h3>
-          <div class="appliance-row">
-            <label>Lights (LED bulbs)</label>
-            <input type="number" id="lights" placeholder="e.g. 6" min="0" />
-            <span class="unit">× 9W each</span>
+        <div class="socr">
+          <a href="#" class="soc">Facebook</a><a href="#" class="soc">Instagram</a>
+          <a href="#" class="soc">TikTok</a><a href="#" class="soc">X (Twitter)</a>
+        </div>
+        <p class="shan">@chapchapservices on all platforms</p>
+      </div>
+      <div class="fbox">
+        <h3>Send Us a Message</h3>
+        <div class="fi">
+          <div class="fg"><label>Your Name</label><input type="text" id="cn" placeholder="e.g. Juma Hassan"/></div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="cp" placeholder="+255 7XX XXX XXX"/></div>
+          <div class="fg"><label>Email (optional)</label><input type="email" placeholder="your@email.com"/></div>
+          <div class="fg"><label>What are you looking for?</label>
+            <select id="cc"><option value="">Select a category...</option><option>CCTV Security System</option><option>Solar / Energy Solution</option><option>Smartphone or Gadget</option><option>Car Battery</option><option>Voltage Regulator / AVR</option><option>Home Appliance</option><option>Technical Support</option><option>Other</option></select>
           </div>
-          <div class="appliance-row">
-            <label>Fans</label>
-            <input type="number" id="fans" placeholder="e.g. 2" min="0" />
-            <span class="unit">× 60W each</span>
-          </div>
-          <div class="appliance-row">
-            <label>TV (32")</label>
-            <input type="number" id="tvs" placeholder="e.g. 1" min="0" />
-            <span class="unit">× 80W each</span>
-          </div>
-          <div class="appliance-row">
-            <label>Phone Chargers</label>
-            <input type="number" id="phones" placeholder="e.g. 4" min="0" />
-            <span class="unit">× 10W each</span>
-          </div>
-          <div class="appliance-row">
-            <label>Fridge</label>
-            <input type="number" id="fridge" placeholder="e.g. 1" min="0" />
-            <span class="unit">× 150W each</span>
-          </div>
-          <div class="appliance-row hours-row">
-            <label>Hours of use per day</label>
-            <input type="number" id="hours" placeholder="e.g. 8" min="1" max="24" value="8" />
-            <span class="unit">hours</span>
-          </div>
-          <button class="btn-primary calc-btn" onclick="calculateSolar()">Calculate My Solar Needs ⚡</button>
-          <div class="calc-result" id="calcResult"></div>
+          <div class="fg"><label>Message</label><textarea id="cm" placeholder="Tell us what you need — budget, quantity, location..." rows="4"></textarea></div>
+          <button class="btn btn-pink wa-btn" onclick="sendWA()">📲 &nbsp;Send via WhatsApp</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY IMRANO -->
-  <section class="why-us" id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Why Choose Us</span>
-        <h2 class="section-title">The Imrano Difference</h2>
-        <p class="section-sub">Built on 20 years of trust in Mwanza — delivering quality electronics and energy solutions across Tanzania</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-num">01</div>
-          <h4>20+ Years Legacy</h4>
-          <p>Established since the early 2000s in Mwanza, we've built one of Tanzania's most trusted electronics and energy retail brands through consistent quality and fair pricing.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">02</div>
-          <h4>Own Brand Products</h4>
-          <p>Imranostar and Imrano branded products — from AVR stabilizers to coaxial cables to hairclipper kits — are engineered specifically for East African power conditions and climate.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">03</div>
-          <h4>1-Year Warranty</h4>
-          <p>Every product sold at Imrano Electronics carries a full one-year warranty. If it fails within 12 months under normal use, we fix it or replace it — no arguments.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">04</div>
-          <h4>Expert Installation</h4>
-          <p>Our certified technical team handles CCTV installation, solar system setup, and electrical work across Mwanza. Professional service from the people who sold you the system.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">05</div>
-          <h4>Mobile Payments</h4>
-          <p>Pay via M-Pesa, Tigo Pesa, Airtel Money, or HaloPesa. We accept all major Tanzanian mobile money platforms plus card payments for maximum convenience.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">06</div>
-          <h4>After-Sales Support</h4>
-          <p>Post-purchase technical support from our Mwanza team for all products. Call us, WhatsApp us, or visit our Lumumba store. We don't disappear after the sale.</p>
-        </div>
+<div class="nl">
+  <div class="con">
+    <div class="nli">
+      <div class="nlt"><h3>Stay Connected</h3><p>Exclusive deals, new product alerts &amp; solar tips delivered to your inbox</p></div>
+      <div class="nlf">
+        <input type="email" id="nlE" placeholder="Enter your email address"/>
+        <button class="btn btn-pink" onclick="subscribe()">Subscribe</button>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- PAYMENT METHODS -->
-  <section class="payments">
-    <div class="container">
-      <p class="pay-label">Accepted Payment Methods</p>
-      <div class="pay-grid">
-        <div class="pay-chip mpesa">M-Pesa</div>
-        <div class="pay-chip tigo">Tigo Pesa</div>
-        <div class="pay-chip airtel">Airtel Money</div>
-        <div class="pay-chip halo">HaloPesa</div>
-        <div class="pay-chip card">💳 Visa/Mastercard</div>
-        <div class="pay-chip cash">💵 Cash</div>
+<footer>
+  <div class="con">
+    <div class="fg2">
+      <div class="fb">
+        <div class="flt"><span class="wh">IMRANO</span><span class="pk">TECH</span></div>
+        <p>Tanzania's trusted electronics and energy solutions brand. Serving homes and businesses from Mwanza for over 20 years.</p>
+        <div class="fso"><a href="#" class="fs2">FB</a><a href="#" class="fs2">IG</a><a href="#" class="fs2">TT</a><a href="#" class="fs2">X</a></div>
       </div>
+      <div class="fcol"><h5>Products</h5><ul><li><a href="#">CCTV Cameras</a></li><li><a href="#">Solar Systems</a></li><li><a href="#">AVR Stabilizers</a></li><li><a href="#">Car Batteries</a></li><li><a href="#">Smartphones</a></li><li><a href="#">Home Appliances</a></li></ul></div>
+      <div class="fcol"><h5>Company</h5><ul><li><a href="#">About Imrano</a></li><li><a href="#">Our Brands</a></li><li><a href="#">Installation Services</a></li><li><a href="#">Warranty Policy</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact Us</a></li></ul></div>
+      <div class="fcol"><h5>Policies</h5><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Accessibility</a></li></ul></div>
     </div>
-  </section>
+    <div class="fbot"><p>© 2025 Imrano Electronics Tech Ltd. All rights reserved. | Mzambarauni, Lumumba, Mwanza, Tanzania</p><p>+255 698 533 107 &nbsp;|&nbsp; imranhussein55@gmail.com &nbsp;|&nbsp; @chapchapservices</p></div>
+  </div>
+</footer>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <span class="section-eyebrow">Get In Touch</span>
-          <h2>Visit Us or Contact Our Team</h2>
-          <p>Our technical experts are ready to help you find the right security system, solar solution, or electronic product for your needs.</p>
-          <div class="contact-details">
-            <div class="cd-item">
-              <span class="cd-icon">📍</span>
-              <div>
-                <strong>Physical Store</strong>
-                <p>Mzambarauni, Lumumba Street<br/>Mwanza, Tanzania</p>
-              </div>
-            </div>
-            <div class="cd-item">
-              <span class="cd-icon">📞</span>
-              <div>
-                <strong>Phone / WhatsApp</strong>
-                <p><a href="tel:+255698533107">+255 698 533 107</a></p>
-              </div>
-            </div>
-            <div class="cd-item">
-              <span class="cd-icon">✉️</span>
-              <div>
-                <strong>Email</strong>
-                <p><a href="mailto:imranhussein55@gmail.com">imranhussein55@gmail.com</a></p>
-              </div>
-            </div>
-            <div class="cd-item">
-              <span class="cd-icon">🌐</span>
-              <div>
-                <strong>Website</strong>
-                <p>ImranoTech.com</p>
-              </div>
-            </div>
-          </div>
-          <div class="social-links">
-            <a href="#" class="soc-btn">Facebook</a>
-            <a href="#" class="soc-btn">Instagram</a>
-            <a href="#" class="soc-btn">TikTok</a>
-            <a href="#" class="soc-btn">X (Twitter)</a>
-          </div>
-          <p class="social-handle">@chapchapservices on all platforms</p>
-        </div>
-        <div class="contact-form-wrap">
-          <h3>Send Us a Message</h3>
-          <div class="contact-form">
-            <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" placeholder="e.g. Juma Hassan" />
-            </div>
-            <div class="form-group">
-              <label>Phone / WhatsApp</label>
-              <input type="tel" placeholder="+255 7XX XXX XXX" />
-            </div>
-            <div class="form-group">
-              <label>Email (optional)</label>
-              <input type="email" placeholder="your@email.com" />
-            </div>
-            <div class="form-group">
-              <label>What are you looking for?</label>
-              <select>
-                <option value="">Select a category...</option>
-                <option>CCTV Security System</option>
-                <option>Solar / Energy Solution</option>
-                <option>Smartphone or Gadget</option>
-                <option>Car Battery</option>
-                <option>Voltage Regulator / AVR</option>
-                <option>Home Appliance</option>
-                <option>Technical Support</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Message</label>
-              <textarea placeholder="Tell us what you need — budget, quantity, location..." rows="4"></textarea>
-            </div>
-            <button class="btn-primary full-btn">Send Message via WhatsApp 📲</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I'm%20interested%20in%20your%20products" class="waf" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>WhatsApp Us</span>
+</a>
 
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <div class="container">
-      <div class="nl-inner">
-        <div class="nl-text">
-          <h3>Stay Connected</h3>
-          <p>Get exclusive deals, new product alerts, and solar tips delivered to your inbox</p>
-        </div>
-        <div class="nl-form">
-          <input type="email" placeholder="Enter your email address" />
-          <button class="btn-primary">Subscribe</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo footer-logo">
-            <span class="logo-imrano">IMRANO</span><span class="logo-tech">TECH</span>
-          </div>
-          <p>Tanzania's trusted electronics and energy solutions brand. Serving homes and businesses from Mwanza since 2000+.</p>
-          <div class="footer-social">
-            <a href="#">FB</a>
-            <a href="#">IG</a>
-            <a href="#">TT</a>
-            <a href="#">X</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h5>Products</h5>
-          <ul>
-            <li><a href="#">CCTV Cameras</a></li>
-            <li><a href="#">Solar Systems</a></li>
-            <li><a href="#">Voltage Regulators</a></li>
-            <li><a href="#">Car Batteries</a></li>
-            <li><a href="#">Smartphones</a></li>
-            <li><a href="#">Home Appliances</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="#">About Imrano</a></li>
-            <li><a href="#">Our Brands</a></li>
-            <li><a href="#">Installation Services</a></li>
-            <li><a href="#">Warranty Policy</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Policies</h5>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Shipping Policy</a></li>
-            <li><a href="#">Refund Policy</a></li>
-            <li><a href="#">Accessibility</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 Imrano Electronics Tech Ltd. All rights reserved. | Mzambarauni, Lumumba, Mwanza, Tanzania</p>
-        <p class="footer-credit">+255 698 533 107 | imranhussein55@gmail.com</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I'm%20interested%20in%20your%20products" class="whatsapp-float" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span>WhatsApp Us</span>
-  </a>
-
-  <script src="script.js"></script>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const burger=document.getElementById('burger');
+const nl=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{
+  nl.classList.toggle('open');
+  const s=burger.querySelectorAll('span');
+  if(nl.classList.contains('open')){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)'}
+  else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform=''}
+});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+let cart=0;const badge=document.getElementById('cb');
+document.querySelectorAll('.ab').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    cart++;badge.textContent=cart;badge.style.transform='scale(1.6)';setTimeout(()=>badge.style.transform='',300);
+    const o=this.textContent;this.textContent='✓ Added!';this.style.background='#4caf50';
+    setTimeout(()=>{this.textContent=o;this.style.background=''},1600);
+  });
+});
+function calcSolar(){
+  const l=+document.getElementById('lights').value||0,f=+document.getElementById('fans').value||0,
+        t=+document.getElementById('tvs').value||0,p=+document.getElementById('phones').value||0,
+        fr=+document.getElementById('fridge').value||0,h=+document.getElementById('hours').value||8;
+  const w=(l*9)+(f*60)+(t*80)+(p*10)+(fr*150);
+  const r=document.getElementById('calcRes');
+  if(!w){r.className='show';document.getElementById('resT').textContent='⚠️ Enter Your Appliances';document.getElementById('resB').textContent='Please fill in at least one appliance above.';return}
+  const kwh=(w*h*1.25)/1000,panels=Math.ceil((kwh*1000/4)/200),batAh=Math.ceil((kwh*2*1000)/(12*0.5)),invW=Math.ceil(w*1.3);
+  let rec=kwh<0.5?'Small kit (100W panel) — from TZS 350,000':kwh<1.5?'Medium kit (200–400W) — from TZS 650,000':kwh<3?'Complete home system (400–600W) — from TZS 1,200,000':'Large commercial system — custom quote needed';
+  document.getElementById('resT').textContent='⚡ Your Solar Recommendation';
+  document.getElementById('resB').innerHTML=`<strong>Total load:</strong> ${w}W &nbsp;|&nbsp; <strong>Daily usage:</strong> ${(w*h/1000).toFixed(2)} kWh<br/><strong>Panels needed:</strong> ${panels}× 200W (${panels*200}W total)<br/><strong>Battery:</strong> ~${batAh}Ah @ 12V &nbsp;|&nbsp; <strong>Inverter:</strong> ${invW}W min<br/><br/><strong>📦 System:</strong> ${rec}<br/><br/><a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I%20need%20solar%20for%20${w}W%20load" target="_blank">📲 WhatsApp for free quote →</a>`;
+  r.className='show';
+}
+function sendWA(){
+  const name=document.getElementById('cn').value||'Customer',phone=document.getElementById('cp').value||'',cat=document.getElementById('cc').value||'Electronics',msg=document.getElementById('cm').value||'';
+  window.open(`https://wa.me/255698533107?text=Hello%20Imrano%20Tech!%0AName%3A%20${encodeURIComponent(name)}%0APhone%3A%20${encodeURIComponent(phone)}%0ALooking%20for%3A%20${encodeURIComponent(cat)}%0AMessage%3A%20${encodeURIComponent(msg)}`,'_blank');
+}
+function subscribe(){
+  const i=document.getElementById('nlE'),b=i.nextElementSibling;
+  if(i.value&&i.value.includes('@')){b.textContent='✓ Subscribed!';b.style.background='#4caf50';i.value='';setTimeout(()=>{b.textContent='Subscribe';b.style.background=''},3000)}
+  else{i.style.borderColor='#e8006e';setTimeout(()=>i.style.borderColor='',2000)}
+}
+document.getElementById('srchBtn').addEventListener('click',()=>{
+  const ex=document.querySelector('.so');if(ex){ex.remove();return}
+  const ov=document.createElement('div');ov.className='so';
+  ov.style.cssText='position:fixed;top:68px;left:0;right:0;background:rgba(6,12,46,.98);backdrop-filter:blur(20px);padding:20px 24px;z-index:998;border-bottom:1px solid rgba(255,255,255,.08)';
+  ov.innerHTML=`<div style="max-width:560px;margin:0 auto;display:flex;gap:10px"><input autofocus placeholder="Search: CCTV, Solar, Battery, AVR..." style="flex:1;padding:12px 20px;border-radius:50px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.9rem;outline:none"/><button onclick="this.closest('.so').remove()" style="background:rgba(255,255,255,.1);border:none;color:#fff;padding:0 18px;border-radius:50px;cursor:pointer;font-size:1.1rem">✕</button></div><p style="color:#7b8ab8;font-size:.75rem;text-align:center;margin-top:10px">Try: CCTV Camera · Solar Panel · AVR Stabilizer · Car Battery</p>`;
+  document.body.appendChild(ov);
+});
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id});
+  document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color='';if(a.getAttribute('href')==='#'+cur)a.style.color='#e8006e'});
+});
+</script>
 </body>
 </html>
