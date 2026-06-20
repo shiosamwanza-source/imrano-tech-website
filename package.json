@@ -1,0 +1,27 @@
+
+
+{
+  "name": "imrano-tech-website",
+  "version": "1.0.0",
+  "description": "Welcome to the official repository for the modern e-commerce and corporate web platform of **Imrano Tech / Electronics Ltd**[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span). This application is built as a robust, full-stack solution optimized for speed, reliability, and mobile responsiveness across Tanzania[span_2](start_span)[span_2](end_span).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shiosamwanza-source/imrano-tech-website/issues"
+  },
+  "homepage": "https://github.com/shiosamwanza-source/imrano-tech-website#readme",
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}
