@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets"
+public_folder: "assets"
+
+collections:
+  - name: "bidhaa"
+    label: "Bidhaa"
+    folder: "products"
+    create: true
+    fields:
+      - {label: "Jina la Bidhaa", name: "title", widget: "string"}
+      - {label: "Bei (Tsh)", name: "price", widget: "number"}
+      - {label: "Maelezo", name: "body", widget: "markdown"}
