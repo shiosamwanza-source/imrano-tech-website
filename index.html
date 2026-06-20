@@ -1,1 +1,27 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Imrano Tech</title><style>body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;text-align:center;}h1{color:#00dfa2;}</style></head><body><div><h1>🛒 Imrano Tech / Electronics Ltd</h1><p>Official Web Platform is under construction...</p></div></body></html>
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <title>Imrano Tech | Duka la Elektroniki</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; text-align: center; }
+        .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; width: 200px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <h1>Bidhaa Zetu</h1>
+    <div id="product-list" class="products">
+        <p>Inapakia bidhaa...</p>
+    </div>
+    
+    <script>
+        // Hapa ndipo mfumo utakapovuta bidhaa zako kutoka folder la 'products'
+        fetch('./products/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('product-list').innerHTML = "<h3>Karibu kwenye duka letu! Ongeza bidhaa kupitia Admin Panel.</h3>";
+            });
+    </script>
+</body>
+</html>
