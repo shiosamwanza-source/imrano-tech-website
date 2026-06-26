@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Imranotech | Products Showcase</title>
+    <title>Imranotech | Suluhisho za Teknolojia</title>
+    <meta name="description" content="Imranotech - CCTV, Solar, Power, Cables na zaidi. Bidhaa za hali ya juu kwa bei nafuu.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,6 +31,143 @@
         }
     </script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === Page-specific styles === */
+
+        /* Hero video/particle BG substitute */
+        .hero-grid-bg {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+        }
+
+        /* Product category card */
+        .product-cat {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background: var(--bg-secondary);
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .product-cat::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: radial-gradient(circle at 50% 0%, var(--cat-color, rgba(255,212,0,0.05)) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .product-cat:hover::before { opacity: 1; }
+        .product-cat:hover {
+            border-color: var(--cat-border, rgba(255,212,0,0.3));
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px -15px var(--cat-shadow, rgba(255,212,0,0.06));
+        }
+        .product-cat .cat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-cat:hover .cat-icon { transform: scale(1.1); }
+
+        /* Calculator */
+        .calc-input {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        .calc-input:focus {
+            border-color: rgba(255,212,0,0.4);
+        }
+        .calc-input::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+        .calc-result-card {
+            background: rgba(255,212,0,0.04);
+            border: 1px solid rgba(255,212,0,0.15);
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+        }
+
+        /* Feature item */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .feature-item:hover {
+            background: rgba(255,255,255,0.02);
+            border-color: var(--border);
+        }
+
+        /* Contact form */
+        .form-input {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 0.85rem 1.15rem;
+            color: white;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: rgba(255,212,0,0.4);
+            box-shadow: 0 0 0 3px rgba(255,212,0,0.05);
+        }
+        .form-input::placeholder { color: rgba(255,255,255,0.2); }
+
+        /* Appliance row animation */
+        .appliance-row {
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Marquee for brands */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Divider line */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-light), transparent);
+        }
+    </style>
 </head>
 <body class="grain">
 
@@ -46,11 +184,11 @@
                     </span>
                 </a>
                 <div class="hidden md:flex items-center gap-1">
-                    <a href="index.html" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Nyumbani</a>
-                    <a href="index.html#products" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Bidhaa</a>
-                    <a href="gallery.html" class="px-4 py-2 rounded-full text-sm text-accent bg-accent-dim font-medium">Gallery</a>
-                    <a href="index.html#calculator" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Kikokotoo</a>
-                    <a href="index.html#contact" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Wasiliana</a>
+                    <a href="index.html" class="px-4 py-2 rounded-full text-sm text-accent bg-accent-dim font-medium">Nyumbani</a>
+                    <a href="#products" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Bidhaa</a>
+                    <a href="gallery.html" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Gallery</a>
+                    <a href="#calculator" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Kikokotoo</a>
+                    <a href="#contact" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Wasiliana</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-primary text-xs font-semibold uppercase tracking-wider hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px -5px rgba(255,212,0,0.3);">
@@ -63,11 +201,11 @@
                 </div>
             </div>
             <div id="mobileMenu" class="md:hidden hidden mt-2 nav-glass rounded-2xl p-4 space-y-1">
-                <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Nyumbani</a>
-                <a href="index.html#products" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Bidhaa</a>
-                <a href="gallery.html" class="block px-4 py-3 rounded-xl text-sm text-accent bg-accent-dim font-medium">Gallery</a>
-                <a href="index.html#calculator" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Kikokotoo</a>
-                <a href="index.html#contact" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Wasiliana</a>
+                <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-accent bg-accent-dim font-medium">Nyumbani</a>
+                <a href="#products" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Bidhaa</a>
+                <a href="gallery.html" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Gallery</a>
+                <a href="#calculator" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Kikokotoo</a>
+                <a href="#contact" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Wasiliana</a>
                 <div class="pt-2 border-t border-border">
                     <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent text-primary text-sm font-semibold">
                         <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>
@@ -79,261 +217,481 @@
     </nav>
 
     <!-- ========== HERO ========== -->
-    <section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center pt-28 md:pt-32 pb-12 md:pb-16 overflow-hidden">
-        <div class="hero-glow" style="top: -10%; left: 20%;"></div>
-        <div class="hero-glow" style="bottom: -20%; right: 10%; opacity: 0.5;"></div>
-        <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 80px 80px;"></div>
-        <div class="relative z-10 max-w-[1100px] mx-auto px-4 md:px-6 text-center">
-            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-8">
-                <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span>
-                <span class="text-[0.7rem] md:text-xs font-medium text-white/50 uppercase tracking-[0.2em]">Product Gallery</span>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- BG effects -->
+        <div class="absolute inset-0 hero-grid-bg"></div>
+        <div class="hero-glow" style="top: 10%; left: 30%; width: 600px; height: 600px;"></div>
+        <div class="hero-glow" style="bottom: 5%; right: 15%; width: 400px; height: 400px; opacity: 0.4;"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-40" style="background: linear-gradient(to top, var(--bg-primary), transparent);"></div>
+
+        <div class="relative z-10 max-w-[1100px] mx-auto px-4 md:px-6 text-center pt-28 md:pt-0">
+            <!-- Label -->
+            <div class="reveal inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-8">
+                <span class="w-2 h-2 rounded-full bg-green-400 pulse-dot"></span>
+                <span class="text-[0.7rem] md:text-xs font-medium text-white/50 uppercase tracking-[0.2em]">Imranostar International Corp.</span>
             </div>
-            <h1 class="reveal delay-1 font-display font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.95] mb-6">
-                <span class="block text-white/90">Bidhaa Zetu</span>
-                <span class="block gradient-text mt-2">Katika Picha</span>
+
+            <!-- Heading -->
+            <h1 class="reveal delay-1 font-display font-bold text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] tracking-tighter leading-[0.92] mb-7">
+                <span class="block text-white/90">Teknolojia ya</span>
+                <span class="block gradient-text mt-1">Kiwango cha Juu</span>
+                <span class="block text-white/90 mt-1">Kwa Bei Nafuu</span>
             </h1>
-            <p class="reveal delay-2 text-sm md:text-base text-white/40 max-w-lg mx-auto leading-relaxed mb-10">
-                Pitia mkusanyiko wa bidhaa zetu za hali ya juu — kamera za usalama, vyombo vya umeme, na zaidi.
+
+            <!-- Subtitle -->
+            <p class="reveal delay-2 text-sm md:text-base lg:text-lg text-white/35 max-w-xl mx-auto leading-relaxed mb-10">
+                CCTV, Solar, Power Solutions, Cables na zaidi — tunakuja na bidhaa bora kutoka Imranostar International Corporation moja kwa moja kwako.
             </p>
-            <div class="reveal delay-3 flex items-center justify-center gap-8 md:gap-14">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="9">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Picha</div>
+
+            <!-- CTAs -->
+            <div class="reveal delay-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#products" class="flex items-center gap-2.5 px-8 py-4 rounded-full bg-accent text-primary text-sm font-semibold uppercase tracking-wider hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 30px -5px rgba(255,212,0,0.3);">
+                    <span class="iconify" data-icon="lucide:shopping-bag" data-width="18"></span>
+                    Tazama Bidhaa
+                </a>
+                <a href="#calculator" class="flex items-center gap-2.5 px-8 py-4 rounded-full border border-border text-white/60 text-sm font-medium hover:border-border-light hover:text-white transition-all duration-300">
+                    <span class="iconify" data-icon="lucide:sun" data-width="18"></span>
+                    Kikokotoo cha Solar
+                </a>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="reveal delay-4 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/20">
+                <div class="flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:shield-check" data-width="16"></span>
+                    <span class="text-xs font-medium">Waranti Halali</span>
                 </div>
-                <div class="w-px h-10 bg-border"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="6">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Categories</div>
+                <div class="flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:truck" data-width="16"></span>
+                    <span class="text-xs font-medium">Usafirishaji Haraka</span>
                 </div>
-                <div class="w-px h-10 bg-border"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="5">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Brands</div>
+                <div class="flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:headphones" data-width="16"></span>
+                    <span class="text-xs font-medium">Msaada 24/7</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:award" data-width="16"></span>
+                    <span class="text-xs font-medium">Bidhaa Asili</span>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-            <span class="text-[0.6rem] uppercase tracking-[0.2em] text-white/40">Pita chini</span>
-            <span class="iconify text-white/40 animate-bounce" data-icon="lucide:chevron-down" data-width="16"></span>
-        </div>
-    </section>
 
-    <!-- ========== FILTERS ========== -->
-    <section class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 mb-8 md:mb-12">
-        <div class="reveal flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
-            <button class="filter-tab active" data-filter="all">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:grid-3x3" data-width="14"></span>
-                    Zote
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="cctv">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:camera" data-width="14"></span>
-                    CCTV
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="power">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:zap" data-width="14"></span>
-                    Power
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="cables">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:cable" data-width="14"></span>
-                    Cables
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="accessories">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:lock" data-width="14"></span>
-                    Accessories
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="grooming">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:scissors" data-width="14"></span>
-                    Grooming
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="devices">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:smartphone" data-width="14"></span>
-                    Devices
-                </span>
-            </button>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+            <span class="text-[0.6rem] uppercase tracking-[0.2em] text-white/40">Bonyeza chini</span>
+            <span class="iconify text-white/40 animate-bounce" data-icon="lucide:chevrons-down" data-width="16"></span>
         </div>
     </section>
 
-    <!-- ========== GALLERY ========== -->
-    <section class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 pb-20 md:pb-32">
-        <div id="galleryGrid" class="gallery-grid">
-
-            <!-- 1: Black CCTV (Featured) -->
-            <div class="gallery-card featured reveal delay-1" data-category="cctv" data-index="0" onclick="openLightbox(0)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/ef175a83-9155-4f4d-8dc7-c97304c41f31.jpeg?auth_key=1882481869-1a84e7d095db4fe4a3f8f58468e2d448-0-e7ed073317d17f789aaa0f7137adcc49" alt="Black CCTV Camera with IR" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-accent/10 border-accent/30 text-accent mb-2"><span class="iconify" data-icon="lucide:camera" data-width="10"></span>CCTV</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">Kamera ya Usalama — IR Bullet</h3>
-                            <p class="text-xs text-white/40 mt-1">Kamera nyeusi na mwelekeo wa kuweza kubadilishwa, taa za bluu za红外</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- ========== BRAND MARQUEE ========== -->
+    <section class="relative z-10 py-8 border-y border-border overflow-hidden">
+        <div class="flex whitespace-nowrap">
+            <div class="marquee-track flex items-center gap-12 px-6">
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">IMRANOSTAR</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">IMRANO</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">CCTV PRO</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">SOLAR TECH</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">POWER SOLUTIONS</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">CHAPCHAP SERVICE</span>
+                <span class="text-white/5">●</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">IMRANOSTAR</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">IMRANO</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">CCTV PRO</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">SOLAR TECH</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">POWER SOLUTIONS</span>
+                <span class="text-white/5">●</span>
+                <span class="text-white/10 font-display font-bold text-xl tracking-tight">CHAPCHAP SERVICE</span>
+                <span class="text-white/5">●</span>
             </div>
-
-            <!-- 2: White CCTV -->
-            <div class="gallery-card reveal delay-2" data-category="cctv" data-index="1" onclick="openLightbox(1)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/c0f51c3c-210c-47fb-919e-66fd59482fb5.jpeg?auth_key=1882481869-d35187bf27ce437daf2de30106d8a968-0-6691473a63195e4a2f0d76e03c57ba1b" alt="White CCTV Camera" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-accent/10 border-accent/30 text-accent mb-2"><span class="iconify" data-icon="lucide:camera" data-width="10"></span>CCTV</div>
-                            <h3 class="font-display font-semibold text-base text-white">Kamera ya Usalama — Dome White</h3>
-                            <p class="text-xs text-white/40 mt-1">Kamera nyeupe na nyumba ya kinga, taa za红外</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3: Notebook Adapter -->
-            <div class="gallery-card reveal delay-3" data-category="power" data-index="2" onclick="openLightbox(2)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/2d5ac5b0-b016-4f47-9d84-6ac7712210e4.jpg?auth_key=1882481869-b6eb3f222eca45e1bf75e0be74406f2b-0-1f245c08bc98fe4e98a6bcf42f3db637" alt="IMRANOSTAR Notebook Power Adapter" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANOSTAR Notebook Adapter</h3>
-                            <p class="text-xs text-white/40 mt-1">Chaja ya laptop, inajumuisha viunganisho 8 vinavyobadilika</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4: AVR Boxes Wide (Featured) -->
-            <div class="gallery-card featured reveal delay-4" data-category="power" data-index="3" onclick="openLightbox(3)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/a89733e9-7b96-4e16-b1ab-becbfe939c50.jpg?auth_key=1882481869-cfba7f553e984bc0bd681cb6d75f1e7a-0-7b2b84ff0b256d9dbe270e3ba06d2a95" alt="IMRANOSTAR AVR Boxes" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">AVR — Automatic Voltage Regulator</h3>
-                            <p class="text-xs text-white/40 mt-1">Mifumo 4: 500VA, 1000VA, 1500VA, 2000VA — 110V/220V 50/60Hz</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5: AVR Close-up -->
-            <div class="gallery-card reveal delay-5" data-category="power" data-index="4" onclick="openLightbox(4)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/dd8ba7da-bb6e-4ca3-b9cf-d9ae4efd6a03.jpg?auth_key=1882481869-cb8918e3378d4aabbe7d6148fe2c3d23-0-fca30c71b4ffe4996b65ee54724b755c" alt="AVR Boxes Close-up" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base text-white">AVR — Close-up View</h3>
-                            <p class="text-xs text-white/40 mt-1">Ukunjaji wa karibu wa boksi za AVR 0.5KVA - 2.0KVA</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6: Coaxial Cable (Featured) -->
-            <div class="gallery-card featured reveal delay-6" data-category="cables" data-index="5" onclick="openLightbox(5)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/124cc7f8-bc98-43e2-92e8-b2d6666be950.jpg?auth_key=1882481869-4d4e34c134cc4a2c908cc028e9a0d094-0-eea0f83e802c2385a1b736ba77579929" alt="IMRANOSTAR Coaxial Cable" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-blue-500/10 border-blue-500/30 text-blue-400 mb-2"><span class="iconify" data-icon="lucide:cable" data-width="10"></span>Cables</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">IMRANOSTAR Coaxial Cable — RG6U</h3>
-                            <p class="text-xs text-white/40 mt-1">Kabeli ya coaxial, 100Y urefu, 75 Ohms impedance</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7: Padlock (Tall) -->
-            <div class="gallery-card tall reveal delay-7" data-category="accessories" data-index="6" onclick="openLightbox(6)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/db6a1f34-cf71-4001-b713-1ba20abcf385.jpg?auth_key=1882481869-56447583557946dda5d28127fa049d84-0-ec11c889cc56fd93c4d1d809f64ede88" alt="IMRANO Padlock" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-purple-500/10 border-purple-500/30 text-purple-400 mb-2"><span class="iconify" data-icon="lucide:lock" data-width="10"></span>Accessories</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANO Padlock — SK366</h3>
-                            <p class="text-xs text-white/40 mt-1">Size 63mm, chuma, muundo wa kipekee</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8: Hairclipper -->
-            <div class="gallery-card reveal delay-8" data-category="grooming" data-index="7" onclick="openLightbox(7)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/9ef56e99-bd9e-4bbe-8a96-eaa42e7de870.jpg?auth_key=1882481869-61c6289469674b18bcf6402aa928229c-0-c3761dd73c5486664771c3ca5f6ff25c" alt="IMRANO Professional Hairclipper" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-green-500/10 border-green-500/30 text-green-400 mb-2"><span class="iconify" data-icon="lucide:scissors" data-width="10"></span>Grooming</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANO Professional Hairclipper</h3>
-                            <p class="text-xs text-white/40 mt-1">Series 200/300, Waranti ya miaka 5</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 9: Smartphones & Tablets (Featured) -->
-            <div class="gallery-card featured reveal delay-9" data-category="devices" data-index="8" onclick="openLightbox(8)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/db5b21f7-7eff-4584-942d-99e402f02555.jpeg?auth_key=1882481869-5297f12b1a0c4de084bee30897043a59-0-712885dad40107af7fb1d37f91dfcc7b" alt="Smartphones and Tablets Display" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-cyan-500/10 border-cyan-500/30 text-cyan-400 mb-2"><span class="iconify" data-icon="lucide:smartphone" data-width="10"></span>Devices</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">Smartphones & Tablets</h3>
-                            <p class="text-xs text-white/40 mt-1">Mkusanyiko wa simu na tablet za aina mbalimbali</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- ========== CTA ========== -->
-    <section class="relative z-10 py-16 md:py-24">
+    <!-- ========== PRODUCTS / CATEGORIES ========== -->
+    <section id="products" class="relative z-10 py-20 md:py-32">
         <div class="max-w-[1400px] mx-auto px-4 md:px-6">
-            <div class="reveal relative rounded-2xl md:rounded-3xl border border-border overflow-hidden" style="background: linear-gradient(135deg, rgba(255,212,0,0.03) 0%, rgba(5,8,15,0.8) 50%, rgba(255,212,0,0.02) 100%);">
-                <div class="absolute top-0 right-0 w-80 h-80 rounded-full" style="background: radial-gradient(circle, rgba(255,212,0,0.05) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
-                <div class="relative z-10 py-16 md:py-24 px-6 md:px-16 text-center">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/20 bg-accent/5 mb-6">
-                        <span class="iconify text-accent" data-icon="lucide:sparkles" data-width="14"></span>
-                        <span class="text-[0.7rem] font-medium text-accent/80 uppercase tracking-[0.15em]">Interested?</span>
+            <!-- Section header -->
+            <div class="max-w-2xl mb-14 md:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-5">
+                    <span class="iconify text-accent" data-icon="lucide:layers" data-width="12"></span>
+                    <span class="text-[0.65rem] font-medium text-white/40 uppercase tracking-[0.2em]">Categories</span>
+                </div>
+                <h2 class="reveal delay-1 font-display font-bold text-3xl md:text-5xl tracking-tight mb-4 text-white/90">
+                    Bidhaa <span class="gradient-text">Tunazotoa</span>
+                </h2>
+                <p class="reveal delay-2 text-sm md:text-base text-white/35 leading-relaxed">
+                    Tuna bidhaa mbalimbali za kiteknolojia kwa matumizi ya nyumbani, ofisini, na biashara. Chagua kategoria uipendayo.
+                </p>
+            </div>
+
+            <!-- Category Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+
+                <!-- CCTV -->
+                <a href="gallery.html" class="reveal delay-1 product-cat group" style="--cat-color: rgba(255,212,0,0.06); --cat-border: rgba(255,212,0,0.25); --cat-shadow: rgba(255,212,0,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-accent/10 text-accent">
+                            <span class="iconify" data-icon="lucide:camera" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">CCTV & Usalama</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">Kamera za usalama za aina zote — Bullet, Dome, PTZ — na vifaa vya rekodi.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-accent/70 group-hover:text-accent transition-colors">
+                            <span>Tazama Gallery</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
                     </div>
-                    <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mb-4 text-white/90">
-                        Pata Bidhaa Hii <span class="gradient-text">Leo</span>
+                </a>
+
+                <!-- Solar -->
+                <a href="#calculator" class="reveal delay-2 product-cat group" style="--cat-color: rgba(250,204,21,0.06); --cat-border: rgba(250,204,21,0.25); --cat-shadow: rgba(250,204,21,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-yellow-400/10 text-yellow-400">
+                            <span class="iconify" data-icon="lucide:sun" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">Solar Energy</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">Paneli za solar, betri, inverter, na mifumo kamili ya nishati ya jua.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-yellow-400/70 group-hover:text-yellow-400 transition-colors">
+                            <span>Kokotoa Solar</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Power -->
+                <a href="gallery.html" class="reveal delay-3 product-cat group" style="--cat-color: rgba(249,115,22,0.06); --cat-border: rgba(249,115,22,0.25); --cat-shadow: rgba(249,115,22,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-orange-500/10 text-orange-400">
+                            <span class="iconify" data-icon="lucide:zap" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">Power Solutions</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">AVR (Voltage Regulator), power adapters, na vyombo vya kulinda vifaa vyako.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-orange-400/70 group-hover:text-orange-400 transition-colors">
+                            <span>Tazama Bidhaa</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Cables -->
+                <a href="gallery.html" class="reveal delay-4 product-cat group" style="--cat-color: rgba(59,130,246,0.06); --cat-border: rgba(59,130,246,0.25); --cat-shadow: rgba(59,130,246,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-blue-500/10 text-blue-400">
+                            <span class="iconify" data-icon="lucide:cable" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">Cables & Wiring</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">Coaxial cables (RG6U), HDMI, power cables, na vifaa vya uunganishaji.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-blue-400/70 group-hover:text-blue-400 transition-colors">
+                            <span>Tazama Bidhaa</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Devices -->
+                <a href="gallery.html" class="reveal delay-5 product-cat group" style="--cat-color: rgba(6,182,212,0.06); --cat-border: rgba(6,182,212,0.25); --cat-shadow: rgba(6,182,212,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-cyan-500/10 text-cyan-400">
+                            <span class="iconify" data-icon="lucide:smartphone" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">Smartphones & Devices</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">Simu za mkononi, tablet, na vifaa vya elektroniki vya kisasa.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-cyan-400/70 group-hover:text-cyan-400 transition-colors">
+                            <span>Tazama Bidhaa</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Grooming & Accessories -->
+                <a href="gallery.html" class="reveal delay-6 product-cat group" style="--cat-color: rgba(168,85,247,0.06); --cat-border: rgba(168,85,247,0.25); --cat-shadow: rgba(168,85,247,0.06);">
+                    <div class="relative z-10">
+                        <div class="cat-icon bg-purple-500/10 text-purple-400">
+                            <span class="iconify" data-icon="lucide:scissors" data-width="24"></span>
+                        </div>
+                        <h3 class="font-display font-semibold text-lg text-white/90 mb-2 group-hover:text-white transition-colors">Grooming & Accessories</h3>
+                        <p class="text-sm text-white/30 leading-relaxed mb-4">Hairclippers za kitaalamu, padlocks, na accessories za kila siku.</p>
+                        <div class="flex items-center gap-1.5 text-xs font-medium text-purple-400/70 group-hover:text-purple-400 transition-colors">
+                            <span>Tazama Bidhaa</span>
+                            <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-[1400px] mx-auto"></div>
+
+    <!-- ========== SOLAR CALCULATOR ========== -->
+    <section id="calculator" class="relative z-10 py-20 md:py-32">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Left: Info -->
+                <div>
+                    <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-5">
+                        <span class="iconify text-yellow-400" data-icon="lucide:sun" data-width="12"></span>
+                        <span class="text-[0.65rem] font-medium text-white/40 uppercase tracking-[0.2em]">Solar Calculator</span>
+                    </div>
+                    <h2 class="reveal delay-1 font-display font-bold text-3xl md:text-5xl tracking-tight mb-5 text-white/90">
+                        Kokotoa <span class="gradient-text">Solar</span> Yako
                     </h2>
-                    <p class="text-sm md:text-base text-white/40 max-w-md mx-auto mb-8 leading-relaxed">
-                        Wasiliana nasi kupitia WhatsApp kwa bei nzuri na usafirishaji haraka.
+                    <p class="reveal delay-2 text-sm md:text-base text-white/35 leading-relaxed mb-8">
+                        Ongeza vifaa unavyotumia nyumbani, ukokotoo utakupa mwongozo wa ukubwa wa paneli, betri, na inverter unahitaji.
                     </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://wa.me/255XXXXXXXXX?text=Napenda kuuliza kuhusu bidhaa zenu" target="_blank" class="flex items-center gap-2.5 px-8 py-4 rounded-full bg-accent text-primary text-sm font-semibold uppercase tracking-wider hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 30px -5px rgba(255,212,0,0.3);">
-                            <span class="iconify" data-icon="lucide:message-circle" data-width="18"></span>
-                            Omba Bei
+
+                    <!-- Features list -->
+                    <div class="space-y-1">
+                        <div class="reveal delay-3 feature-item">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="iconify text-yellow-400" data-icon="lucide:panel-top" data-width="18"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 mb-0.5">Ukubwa wa Paneli</h4>
+                                <p class="text-xs text-white/30">Inapendekeza Watts za paneli zinazofaa kwa mahitaji yako</p>
+                            </div>
+                        </div>
+                        <div class="reveal delay-4 feature-item">
+                            <div class="w-10 h-10 rounded-lg bg-green-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="iconify text-green-400" data-icon="lucide:battery-charging" data-width="18"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 mb-0.5">Uwezo wa Betri</h4>
+                                <p class="text-xs text-white/30">Ah zinazohitajika kuhifadhi nishati kwa matumizi ya usiku</p>
+                            </div>
+                        </div>
+                        <div class="reveal delay-5 feature-item">
+                            <div class="w-10 h-10 rounded-lg bg-orange-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="iconify text-orange-400" data-icon="lucide:zap" data-width="18"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 mb-0.5">Saizi ya Inverter</h4>
+                                <p class="text-xs text-white/30">VA zinazohitajika kwa ajili ya vifaa vyako vyote</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Calculator Form -->
+                <div class="reveal delay-2">
+                    <div class="rounded-2xl border border-border bg-secondary/50 p-6 md:p-8" style="backdrop-filter: blur(8px);">
+                        <h3 class="font-display font-semibold text-lg text-white/80 mb-6">Ongeza Vifaa Vyako</h3>
+
+                        <!-- Appliance list -->
+                        <div id="applianceList" class="space-y-3 mb-6 max-h-[320px] overflow-y-auto pr-1" style="scrollbar-width: thin; scrollbar-color: rgba(255,212,0,0.2) transparent;">
+                            <!-- Rows will be added here by JS -->
+                        </div>
+
+                        <!-- Add appliance button -->
+                        <button onclick="addApplianceRow()" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-border-light text-white/30 text-sm font-medium hover:border-accent/30 hover:text-accent/60 transition-all duration-300 mb-6">
+                            <span class="iconify" data-icon="lucide:plus" data-width="16"></span>
+                            Ongeza Kifaa
+                        </button>
+
+                        <!-- Quick add presets -->
+                        <div class="mb-6">
+                            <p class="text-[0.65rem] text-white/20 uppercase tracking-wider mb-2.5">Ongeza Haraka:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="quickAdd('Taa (LED)', 10, 8)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">Taa LED</button>
+                                <button onclick="quickAdd('TV 32"', 60, 6)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">TV 32"</button>
+                                <button onclick="quickAdd('Fridge', 150, 12)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">Fridge</button>
+                                <button onclick="quickAdd('Fan', 75, 10)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">Fan</button>
+                                <button onclick="quickAdd('Phone Charger', 10, 3)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">Chaja</button>
+                                <button onclick="quickAdd('Radio', 15, 8)" class="px-3 py-1.5 rounded-lg border border-border text-[0.7rem] text-white/35 hover:border-accent/30 hover:text-accent/60 transition-all">Radio</button>
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div id="calcResults" class="space-y-3 hidden">
+                            <div class="section-divider"></div>
+                            <p class="text-[0.65rem] text-white/20 uppercase tracking-wider mt-4 mb-1">Matokeo:</p>
+                            <div class="calc-result-card">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="iconify text-yellow-400" data-icon="lucide:panel-top" data-width="18"></span>
+                                        <span class="text-sm text-white/60">Jumla ya Watts</span>
+                                    </div>
+                                    <span id="resultWatts" class="font-display font-bold text-lg text-accent">0W</span>
+                                </div>
+                            </div>
+                            <div class="calc-result-card">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="iconify text-yellow-400" data-icon="lucide:sun" data-width="18"></span>
+                                        <span class="text-sm text-white/60">Paneli (Wp)</span>
+                                    </div>
+                                    <span id="resultPanel" class="font-display font-bold text-lg text-accent">0Wp</span>
+                                </div>
+                            </div>
+                            <div class="calc-result-card">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="iconify text-green-400" data-icon="lucide:battery-charging" data-width="18"></span>
+                                        <span class="text-sm text-white/60">Betri (Ah @12V)</span>
+                                    </div>
+                                    <span id="resultBattery" class="font-display font-bold text-lg text-green-400">0Ah</span>
+                                </div>
+                            </div>
+                            <div class="calc-result-card">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="iconify text-orange-400" data-icon="lucide:zap" data-width="18"></span>
+                                        <span class="text-sm text-white/60">Inverter (VA)</span>
+                                    </div>
+                                    <span id="resultInverter" class="font-display font-bold text-lg text-orange-400">0VA</span>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/255XXXXXXXXX?text=Napenda kuuliza kuhusu mfumo wa solar" target="_blank" class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-accent text-primary text-sm font-semibold uppercase tracking-wider hover:scale-[1.02] transition-transform duration-300 mt-2" style="box-shadow: 0 0 20px -5px rgba(255,212,0,0.3);">
+                                <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>
+                                Omba Bei ya Solar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-[1400px] mx-auto"></div>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="relative z-10 py-20 md:py-32">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-5">
+                    <span class="iconify text-accent" data-icon="lucide:trophy" data-width="12"></span>
+                    <span class="text-[0.65rem] font-medium text-white/40 uppercase tracking-[0.2em]">Why Us</span>
+                </div>
+                <h2 class="reveal delay-1 font-display font-bold text-3xl md:text-5xl tracking-tight mb-4 text-white/90">
+                    Kwa Nini <span class="gradient-text">Imranotech?</span>
+                </h2>
+                <p class="reveal delay-2 text-sm md:text-base text-white/35 leading-relaxed">
+                    Sio tu tunauza bidhaa — tunatoa suluhisho za kuaminika kwa wateja wetu.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="reveal delay-1 text-center p-6 rounded-2xl border border-border bg-secondary/30 hover:border-accent/20 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
+                        <span class="iconify text-accent" data-icon="lucide:badge-check" data-width="26"></span>
+                    </div>
+                    <h3 class="font-display font-semibold text-base text-white/85 mb-2">Bidhaa Halisi</h3>
+                    <p class="text-xs text-white/30 leading-relaxed">Bidhaa zote zinatoka moja kwa moja kutoka Imranostar International Corp.</p>
+                </div>
+                <div class="reveal delay-2 text-center p-6 rounded-2xl border border-border bg-secondary/30 hover:border-accent/20 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-2xl bg-green-400/10 flex items-center justify-center mx-auto mb-5">
+                        <span class="iconify text-green-400" data-icon="lucide:shield-check" data-width="26"></span>
+                    </div>
+                    <h3 class="font-display font-semibold text-base text-white/85 mb-2">Waranti</h3>
+                    <p class="text-xs text-white/30 leading-relaxed">Waranti halisi hadi miaka 5 kwa bidhaa zinazofaa.</p>
+                </div>
+                <div class="reveal delay-3 text-center p-6 rounded-2xl border border-border bg-secondary/30 hover:border-accent/20 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-400/10 flex items-center justify-center mx-auto mb-5">
+                        <span class="iconify text-blue-400" data-icon="lucide:truck" data-width="26"></span>
+                    </div>
+                    <h3 class="font-display font-semibold text-base text-white/85 mb-2">Usafirishaji</h3>
+                    <p class="text-xs text-white/30 leading-relaxed">Tunafikisha bidhaa popote pale Tanzania kwa wakati.</p>
+                </div>
+                <div class="reveal delay-4 text-center p-6 rounded-2xl border border-border bg-secondary/30 hover:border-accent/20 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-400/10 flex items-center justify-center mx-auto mb-5">
+                        <span class="iconify text-purple-400" data-icon="lucide:headphones" data-width="26"></span>
+                    </div>
+                    <h3 class="font-display font-semibold text-base text-white/85 mb-2">Msaada</h3>
+                    <p class="text-xs text-white/30 leading-relaxed">Timu yetu iko tayari kusaidia kupitia WhatsApp muda wote.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-[1400px] mx-auto"></div>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="relative z-10 py-20 md:py-32">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Left: Info -->
+                <div>
+                    <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-5">
+                        <span class="iconify text-accent" data-icon="lucide:mail" data-width="12"></span>
+                        <span class="text-[0.65rem] font-medium text-white/40 uppercase tracking-[0.2em]">Contact</span>
+                    </div>
+                    <h2 class="reveal delay-1 font-display font-bold text-3xl md:text-5xl tracking-tight mb-5 text-white/90">
+                        Wasiliana <span class="gradient-text">Nasi</span>
+                    </h2>
+                    <p class="reveal delay-2 text-sm md:text-base text-white/35 leading-relaxed mb-10">
+                        Una swali, ombi la bei, au unahitaji ushauri? Tupo tayari kukusaidia. Chagua njia unayopenda.
+                    </p>
+
+                    <!-- Contact methods -->
+                    <div class="space-y-5">
+                        <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="reveal delay-3 flex items-center gap-4 p-4 rounded-xl border border-border hover:border-green-500/30 hover:bg-green-500/[0.03] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-green-400" data-icon="lucide:message-circle" data-width="22"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 group-hover:text-green-400 transition-colors">WhatsApp</h4>
+                                <p class="text-xs text-white/30">Tuma ujumbe moja kwa moja — jibu la haraka</p>
+                            </div>
+                            <span class="iconify ml-auto text-white/10 group-hover:text-green-400/40 group-hover:translate-x-1 transition-all" data-icon="lucide:arrow-right" data-width="16"></span>
                         </a>
-                        <a href="index.html" class="flex items-center gap-2 px-8 py-4 rounded-full border border-border text-white/60 text-sm font-medium hover:border-border-light hover:text-white transition-all duration-300">
-                            <span class="iconify" data-icon="lucide:arrow-left" data-width="16"></span>
-                            Rudi Nyumbani
+                        <a href="mailto:info@imranotech.com" class="reveal delay-4 flex items-center gap-4 p-4 rounded-xl border border-border hover:border-accent/30 hover:bg-accent/[0.03] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-accent" data-icon="lucide:mail" data-width="22"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 group-hover:text-accent transition-colors">Barua Pepe</h4>
+                                <p class="text-xs text-white/30">info@imranotech.com</p>
+                            </div>
+                            <span class="iconify ml-auto text-white/10 group-hover:text-accent/40 group-hover:translate-x-1 transition-all" data-icon="lucide:arrow-right" data-width="16"></span>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="reveal delay-5 flex items-center gap-4 p-4 rounded-xl border border-border hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-white/60" data-icon="lucide:github" data-width="22"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">GitHub</h4>
+                                <p class="text-xs text-white/30">Angalia miradi yetu ya open source</p>
+                            </div>
+                            <span class="iconify ml-auto text-white/10 group-hover:text-white/30 group-hover:translate-x-1 transition-all" data-icon="lucide:arrow-right" data-width="16"></span>
                         </a>
                     </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="reveal delay-2">
+                    <form id="contactForm" class="rounded-2xl border border-border bg-secondary/50 p-6 md:p-8 space-y-5" style="backdrop-filter: blur(8px);" onsubmit="handleContactSubmit(event)">
+                        <h3 class="font-display font-semibold text-lg text-white/80 mb-2">Tuma Ujumbe</h3>
+                        <p class="text-xs text-white/25 mb-5">Jaza fomu hii tutakujibu kwa njia yoyote.</p>
+
+                        <div>
+                            <label class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">Jina</label>
+                            <input type="text" class="form-input" placeholder="Jina lako kamili" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">Namba ya Simu</label>
+                            <input type="tel" class="form-input" placeholder="+255 7XX XXX XXX" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">Ujumbe</label>
+                            <textarea class="form-input" rows="4" placeholder="Andika ujumbe wako hapa..." required style="resize: vertical; min-height: 100px;"></textarea>
+                        </div>
+                        <button type="submit" class="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-accent text-primary text-sm font-semibold uppercase tracking-wider hover:scale-[1.02] transition-transform duration-300" style="box-shadow: 0 0 20px -5px rgba(255,212,0,0.3);">
+                            <span class="iconify" data-icon="lucide:send" data-width="16"></span>
+                            Tuma Ujumbe
+                        </button>
+                        <div id="formSuccess" class="hidden text-center py-3 rounded-xl bg-green-500/10 border border-green-500/20">
+                            <p class="text-sm text-green-400 font-medium">Ujumbe umetumwa! Tutakujibu haraka.</p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -342,38 +700,45 @@
     <!-- ========== FOOTER ========== -->
     <footer class="relative z-10 border-t border-border" style="background: linear-gradient(to bottom, #05080f, #020308);">
         <div class="max-w-[1400px] mx-auto px-4 md:px-6 py-12 md:py-16">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-                <div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+                <div class="md:col-span-2">
                     <a href="index.html" class="flex items-center gap-2.5 mb-4">
                         <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
                             <span class="text-primary font-display font-bold text-sm">IM</span>
                         </div>
                         <span class="font-display font-semibold text-base tracking-tight">Imrano<span class="text-accent">tech</span></span>
                     </a>
-                    <p class="text-sm text-white/30 leading-relaxed max-w-xs">Suluhisho zako za teknolojia — CCTV, Solar, Power, na zaidi. Tunatenga bidhaa za hali ya juu kwa bei nafuu.</p>
+                    <p class="text-sm text-white/30 leading-relaxed max-w-sm mb-6">Suluhisho zako za teknolojia — CCTV, Solar, Power, Cables, na zaidi. Bidhaa za hali ya juu kutoka Imranostar International Corporation.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="w-10 h-10 rounded-xl border border-border flex items-center justify-center text-white/30 hover:text-green-400 hover:border-green-500/30 transition-all">
+                            <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="w-10 h-10 rounded-xl border border-border flex items-center justify-center text-white/30 hover:text-white hover:border-white/20 transition-all">
+                            <span class="iconify" data-icon="lucide:github" data-width="16"></span>
+                        </a>
+                        <a href="mailto:info@imranotech.com" class="w-10 h-10 rounded-xl border border-border flex items-center justify-center text-white/30 hover:text-accent hover:border-accent/30 transition-all">
+                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <h4 class="font-display font-semibold text-sm text-white/60 uppercase tracking-wider mb-4">Mkurasa</h4>
                     <div class="space-y-2.5">
-                        <a href="index.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Nyumbani</a>
-                        <a href="index.html#products" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Bidhaa</a>
-                        <a href="gallery.html" class="block text-sm text-accent/70 hover:text-accent transition-colors duration-300">Gallery</a>
-                        <a href="index.html#calculator" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Kikokotoo cha Solar</a>
-                        <a href="index.html#contact" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Wasiliana</a>
+                        <a href="index.html" class="block text-sm text-accent/70 hover:text-accent transition-colors duration-300">Nyumbani</a>
+                        <a href="#products" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Bidhaa</a>
+                        <a href="gallery.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Gallery</a>
+                        <a href="#calculator" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Kikokotoo cha Solar</a>
+                        <a href="#contact" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Wasiliana</a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="font-display font-semibold text-sm text-white/60 uppercase tracking-wider mb-4">Mawasiliano</h4>
-                    <div class="space-y-3">
-                        <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>WhatsApp
-                        </a>
-                        <a href="mailto:info@imranotech.com" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>info@imranotech.com
-                        </a>
-                        <a href="https://github.com/" target="_blank" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:github" data-width="16"></span>GitHub
-                        </a>
+                    <h4 class="font-display font-semibold text-sm text-white/60 uppercase tracking-wider mb-4">Bidhaa</h4>
+                    <div class="space-y-2.5">
+                        <a href="gallery.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">CCTV Cameras</a>
+                        <a href="#calculator" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Solar Systems</a>
+                        <a href="gallery.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">AVR & Power</a>
+                        <a href="gallery.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Cables</a>
+                        <a href="gallery.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Grooming</a>
                     </div>
                 </div>
             </div>
@@ -384,31 +749,155 @@
         </div>
     </footer>
 
-    <!-- ========== LIGHTBOX ========== -->
-    <div id="lightbox" class="lightbox" onclick="closeLightboxOutside(event)">
-        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
-            <span class="iconify" data-icon="lucide:x" data-width="20"></span>
-        </button>
-        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous">
-            <span class="iconify" data-icon="lucide:chevron-left" data-width="20"></span>
-        </button>
-        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next">
-            <span class="iconify" data-icon="lucide:chevron-right" data-width="20"></span>
-        </button>
-        <img id="lightboxImg" src="" alt="Gallery Image">
-        <div class="lightbox-info">
-            <div id="lightboxBadge" class="cat-badge mb-2 mx-auto"></div>
-            <h3 id="lightboxTitle" class="font-display font-semibold text-lg md:text-xl text-white"></h3>
-            <p id="lightboxDesc" class="text-sm text-white/40 mt-1"></p>
-            <p id="lightboxCounter" class="text-xs text-white/20 mt-3"></p>
-        </div>
-    </div>
-
     <!-- ========== WHATSAPP FLOAT ========== -->
     <a href="https://wa.me/255XXXXXXXXX?text=Napenda kuuliza kuhusu bidhaa zenu" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <script src="script.js"></script>
+    <!-- ========== PAGE-SPECIFIC JS ========== -->
+    <script>
+        // ===== Mobile Menu =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+                mobileMenu.classList.toggle('hidden', !menuOpen);
+                mobileMenuBtn.querySelector('.iconify').setAttribute('data-icon', menuOpen ? 'lucide:x' : 'lucide:menu');
+            });
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuOpen = false;
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.querySelector('.iconify').setAttribute('data-icon', 'lucide:menu');
+                });
+            });
+        }
+
+        // ===== Scroll Reveal =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== Nav Scroll Effect =====
+        const navGlass = document.querySelector('nav .nav-glass');
+        if (navGlass) {
+            window.addEventListener('scroll', () => {
+                navGlass.style.background = window.scrollY > 100 ? 'rgba(5,8,15,0.9)' : 'rgba(5,8,15,0.7)';
+            });
+        }
+
+        // ===== SOLAR CALCULATOR =====
+        let applianceRowId = 0;
+
+        function addApplianceRow(name = '', watts = '', hours = '') {
+            const list = document.getElementById('applianceList');
+            const id = applianceRowId++;
+            const row = document.createElement('div');
+            row.className = 'appliance-row flex items-center gap-2';
+            row.id = 'arow-' + id;
+            row.innerHTML =
+                '<input type="text" class="calc-input flex-1 min-w-0" placeholder="Kifaa (e.g. Taa)" value="' + name + '" oninput="calculateSolar()">' +
+                '<input type="number" class="calc-input w-20" placeholder="W" value="' + watts + '" min="0" oninput="calculateSolar()">' +
+                '<input type="number" class="calc-input w-16" placeholder="Hrs" value="' + hours + '" min="0" max="24" oninput="calculateSolar()">' +
+                '<button onclick="removeRow(' + id + ')" class="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-white/20 hover:text-red-400 hover:border-red-400/30 transition-all flex-shrink-0">' +
+                '<span class="iconify" data-icon="lucide:trash-2" data-width="14"></span></button>';
+            list.appendChild(row);
+            calculateSolar();
+            // Scroll to bottom
+            list.scrollTop = list.scrollHeight;
+        }
+
+        function removeRow(id) {
+            const row = document.getElementById('arow-' + id);
+            if (row) {
+                row.style.opacity = '0';
+                row.style.transform = 'translateX(10px)';
+                row.style.transition = 'all 0.25s ease';
+                setTimeout(() => {
+                    row.remove();
+                    calculateSolar();
+                }, 250);
+            }
+        }
+
+        function quickAdd(name, watts, hours) {
+            addApplianceRow(name, watts, hours);
+        }
+
+        function calculateSolar() {
+            const rows = document.querySelectorAll('.appliance-row');
+            let totalWattHours = 0;
+            let totalWatts = 0;
+
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                const w = parseFloat(inputs[1].value) || 0;
+                const h = parseFloat(inputs[2].value) || 0;
+                totalWattHours += w * h;
+                totalWatts += w;
+            });
+
+            const resultsDiv = document.getElementById('calcResults');
+
+            if (totalWatts <= 0) {
+                resultsDiv.classList.add('hidden');
+                return;
+            }
+
+            resultsDiv.classList.remove('hidden');
+
+            // Calculations
+            // Panel: totalWh / (peak sun hours ~5) * 1.3 (loss factor)
+            const panelWp = Math.ceil((totalWattHours / 5) * 1.3);
+            // Battery: totalWh / 12V * 1.2 (DoD factor) for 12V system
+            const batteryAh = Math.ceil((totalWattHours / 12) * 1.2);
+            // Inverter: totalWatts * 1.25 (surge factor)
+            const inverterVA = Math.ceil(totalWatts * 1.25);
+
+            document.getElementById('resultWatts').textContent = totalWatts + 'W';
+            document.getElementById('resultPanel').textContent = panelWp + 'Wp';
+            document.getElementById('resultBattery').textContent = batteryAh + 'Ah';
+            document.getElementById('resultInverter').textContent = inverterVA + 'VA';
+        }
+
+        // Add initial empty row
+        addApplianceRow();
+
+        // ===== CONTACT FORM =====
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('formSuccess');
+            const inputs = form.querySelectorAll('input, textarea');
+
+            // Build WhatsApp message from form data
+            const name = inputs[0].value;
+            const phone = inputs[1].value;
+            const message = inputs[2].value;
+            const waText = encodeURIComponent('Habari Imranotech!\n\nJina: ' + name + '\nSimu: ' + phone + '\n\nUjumbe:\n' + message);
+
+            // Show success
+            success.classList.remove('hidden');
+            form.querySelectorAll('button[type="submit"]').forEach(btn => btn.style.display = 'none');
+
+            // Open WhatsApp after short delay
+            setTimeout(() => {
+                window.open('https://wa.me/255XXXXXXXXX?text=' + waText, '_blank');
+            }, 800);
+
+            // Reset after 4 seconds
+            setTimeout(() => {
+                form.reset();
+                success.classList.add('hidden');
+                form.querySelectorAll('button[type="submit"]').forEach(btn => btn.style.display = '');
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
