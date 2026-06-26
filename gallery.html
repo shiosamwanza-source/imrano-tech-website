@@ -1,414 +1,417 @@
 <!DOCTYPE html>
-<html lang="sw" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Imranotech | Products Showcase</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#05080f',
-                        secondary: '#0a101f',
-                        accent: '#FFD400',
-                        'accent-dim': 'rgba(255,212,0,0.1)',
-                        'accent-mid': 'rgba(255,212,0,0.3)',
-                        border: 'rgba(255,255,255,0.08)',
-                        'border-light': 'rgba(255,255,255,0.12)',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Manrope', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery — Imrano Electronics Tech Ltd</title>
+<meta name="description" content="Browse our product photos — CCTV, Solar, AVR, Cables, Smartphones and more."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+:root{
+  --navy:#060c2e;--navy2:#0d1545;--navy3:#162060;
+  --pink:#e8006e;--pink2:#ff1a80;--pink-glow:rgba(232,0,110,0.3);
+  --cyan:#00d4ff;--gold:#ffd700;--green:#00e676;
+  --white:#fff;--off:#f0f4ff;--gray:#7b8ab8;--light:#ccd6f6;
+  --radius:14px;--rad-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--off);color:#0d1545;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(6,12,46,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:all .3s}
+nav.scrolled{background:rgba(6,12,46,.99);box-shadow:0 4px 40px rgba(0,0,0,.5)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.45rem;letter-spacing:1px}
+.logo .wh{color:#fff}.logo .pk{color:var(--pink)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:rgba(255,255,255,.7);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--pink);transition:width .25s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--pink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+
+/* ===== GALLERY HERO ===== */
+.gal-hero{background:linear-gradient(145deg,#060c2e 0%,#0a1040 35%,#0f0530 70%,#060c2e 100%);padding:140px 24px 70px;text-align:center;position:relative;overflow:hidden}
+.gal-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
+.gal-hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,0,110,.15),transparent 65%);pointer-events:none}
+.gal-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:12px;position:relative}
+.gal-hero h1 span{color:var(--pink)}
+.gal-hero p{color:rgba(204,214,246,.7);font-size:1.05rem;max-width:500px;margin:0 auto;position:relative}
+.gal-count{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:8px 20px;border-radius:50px;color:var(--light);font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;position:relative}
+
+/* ===== FILTERS ===== */
+.filter-wrap{max-width:1200px;margin:-30px auto 0;padding:0 24px;position:relative;z-index:10}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;background:#fff;padding:14px 20px;border-radius:var(--rad-lg);box-shadow:0 8px 40px rgba(13,21,69,.1);border:1px solid rgba(13,21,69,.06)}
+.ft{padding:9px 22px;border-radius:50px;border:1px solid rgba(13,21,69,.12);background:transparent;color:var(--gray);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;transition:all .25s}
+.ft:hover{border-color:var(--pink);color:var(--pink);background:rgba(232,0,110,.04)}
+.ft.active{background:linear-gradient(135deg,#e8006e,#ff1a80);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(232,0,110,.3)}
+
+/* ===== GALLERY GRID ===== */
+.gal-sec{padding:60px 0 100px}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.gc{border-radius:var(--rad-lg);overflow:hidden;border:1px solid rgba(13,21,69,.08);background:#fff;cursor:pointer;transition:all .35s;position:relative}
+.gc:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(13,21,69,.14);border-color:rgba(232,0,110,.2)}
+.gc.feat{grid-column:span 2}
+.gc img{width:100%;height:250px;object-fit:cover;display:block;transition:transform .6s ease}
+.gc.feat img{height:340px}
+.gc:hover img{transform:scale(1.06)}
+.gc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,46,.92) 0%,rgba(6,12,46,.3) 40%,transparent 65%);opacity:0;transition:opacity .35s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.gc:hover .gc-overlay{opacity:1}
+.gc-badge{display:inline-flex;align-items:center;gap:5px;background:var(--pink);color:#fff;padding:4px 12px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;width:fit-content;margin-bottom:8px;box-shadow:0 4px 12px rgba(232,0,110,.3)}
+.gc-badge.cctv{background:linear-gradient(135deg,#e8006e,#ff1a80)}
+.gc-badge.power{background:linear-gradient(135deg,#ff9800,#ffd700)}
+.gc-badge.cables{background:linear-gradient(135deg,#2196f3,#00d4ff)}
+.gc-badge.acc{background:linear-gradient(135deg,#9c27b0,#e8006e)}
+.gc-badge.groom{background:linear-gradient(135deg,#4caf50,#00e676)}
+.gc-badge.dev{background:linear-gradient(135deg,#00bcd4,#2196f3)}
+.gc-overlay h4{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:4px}
+.gc-overlay p{color:rgba(204,214,246,.7);font-size:.8rem}
+.gc-expand{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.7);width:52px;height:52px;border-radius:50%;background:rgba(232,0,110,.25);backdrop-filter:blur(10px);border:1px solid rgba(232,0,110,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;opacity:0;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.gc:hover .gc-expand{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.no-res{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--gray)}
+.no-res span{font-size:4rem;display:block;margin-bottom:16px;opacity:.15}
+
+/* ===== CTA ===== */
+.gal-cta{background:linear-gradient(145deg,#060c2e,#0d1545 50%,#0f0530);padding:90px 24px;text-align:center;position:relative;overflow:hidden}
+.gal-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
+.gal-cta h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.gal-cta h2 span{color:var(--pink)}
+.gal-cta p{color:rgba(204,214,246,.6);font-size:1rem;margin-bottom:28px;position:relative}
+.gal-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.5px;border:none;cursor:pointer;transition:all .25s}
+.btn-pink{background:linear-gradient(135deg,#e8006e,#ff1a80);color:#fff;box-shadow:0 6px 24px rgba(232,0,110,.4)}
+.btn-pink:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,0,110,.6)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink)}
+.gal-back{display:inline-flex;align-items:center;gap:6px;color:rgba(204,214,246,.5);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.85rem;margin-top:20px;transition:color .2s;position:relative}
+.gal-back:hover{color:var(--pink)}
+
+/* ===== LIGHTBOX ===== */
+.lb{position:fixed;inset:0;z-index:10000;background:rgba(6,12,46,.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .35s}
+.lb.open{opacity:1;visibility:visible}
+.lb img{max-width:90vw;max-height:82vh;object-fit:contain;border-radius:var(--radius);box-shadow:0 40px 100px rgba(0,0,0,.6);transform:scale(.92);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.lb.open img{transform:scale(1)}
+.lb-close{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:10}
+.lb-close:hover{background:var(--pink);border-color:var(--pink)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:10}
+.lb-nav:hover{background:var(--pink);border-color:var(--pink)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-info{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);text-align:center;max-width:480px;width:90%}
+.lb-info h4{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:4px}
+.lb-info p{color:rgba(204,214,246,.65);font-size:.85rem}
+.lb-info .lb-cnt{color:var(--gray);font-size:.72rem;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:1px}
+.lb-badge-sm{display:inline-block;padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+
+/* ===== FOOTER ===== */
+footer{background:#030817;padding:64px 0 0}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.flt{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.4rem}
+.flt .wh{color:#fff}.flt .pk{color:var(--pink)}
+.fb p{color:var(--gray);font-size:.84rem;line-height:1.75;margin:14px 0 22px;max-width:270px}
+.fso{display:flex;gap:8px}
+.fs2{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--light);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.fs2:hover{background:var(--pink);border-color:var(--pink);color:#fff;transform:translateY(-3px)}
+.fcol h5{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:2px;margin-bottom:18px}
+.fcol ul{display:flex;flex-direction:column;gap:10px}
+.fcol a{color:var(--gray);font-size:.84rem;transition:color .2s}
+.fcol a:hover{color:var(--pink)}
+.fbot{border-top:1px solid rgba(255,255,255,.05);padding:22px 0;text-align:center;max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.fbot p{color:var(--gray);font-size:.78rem;line-height:1.7}
+
+/* ===== WA FLOAT ===== */
+.waf{position:fixed;bottom:28px;right:28px;z-index:998;background:linear-gradient(135deg,#25d366,#1da851);color:#fff;padding:14px 20px;border-radius:50px;display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;box-shadow:0 8px 30px rgba(37,211,102,.45);animation:wap 3s ease-in-out infinite;transition:all .25s}
+.waf:hover{transform:scale(1.06);box-shadow:0 12px 40px rgba(37,211,102,.6)}
+@keyframes wap{0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.45)}50%{box-shadow:0 8px 50px rgba(37,211,102,.75)}}
+
+.rev{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+.rev-d1{transition-delay:.05s}.rev-d2{transition-delay:.1s}.rev-d3{transition-delay:.15s}.rev-d4{transition-delay:.2s}.rev-d5{transition-delay:.25s}.rev-d6{transition-delay:.3s}.rev-d7{transition-delay:.35s}.rev-d8{transition-delay:.4s}.rev-d9{transition-delay:.45s}
+
+@media(max-width:1024px){
+  .gal-grid{grid-template-columns:repeat(2,1fr)}.gc.feat{grid-column:span 2}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(6,12,46,.98);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:flex}
+  .gal-grid{grid-template-columns:1fr}.gc.feat{grid-column:span 1}.gc.feat img{height:250px}
+  .filter-row{gap:6px;padding:12px 14px}.ft{padding:7px 16px;font-size:.75rem}
+  .fg2{grid-template-columns:1fr 1fr}
+  .waf span{display:none}.waf{padding:14px;border-radius:50%}
+}
+@media(max-width:480px){.gal-hero{padding:120px 16px 50px}}
+</style>
 </head>
-<body class="grain">
+<body>
 
-    <!-- ========== NAVIGATION ========== -->
-    <nav class="fixed top-0 left-0 right-0 z-[9990] pt-4 md:pt-6 px-4 md:px-6">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="nav-glass rounded-full px-4 md:px-6 py-3 flex items-center justify-between">
-                <a href="index.html" class="flex items-center gap-2.5 group">
-                    <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
-                        <span class="text-primary font-display font-bold text-sm">IM</span>
-                    </div>
-                    <span class="font-display font-semibold text-sm md:text-base tracking-tight">
-                        Imrano<span class="text-accent">tech</span>
-                    </span>
-                </a>
-                <div class="hidden md:flex items-center gap-1">
-                    <a href="index.html" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Nyumbani</a>
-                    <a href="index.html#products" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Bidhaa</a>
-                    <a href="gallery.html" class="px-4 py-2 rounded-full text-sm text-accent bg-accent-dim font-medium">Gallery</a>
-                    <a href="index.html#calculator" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Kikokotoo</a>
-                    <a href="index.html#contact" class="px-4 py-2 rounded-full text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300">Wasiliana</a>
-                </div>
-                <div class="flex items-center gap-3">
-                    <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-primary text-xs font-semibold uppercase tracking-wider hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px -5px rgba(255,212,0,0.3);">
-                        <span class="iconify" data-icon="lucide:message-circle" data-width="14"></span>
-                        WhatsApp
-                    </a>
-                    <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-border flex items-center justify-center text-white/60 hover:text-white hover:border-border-light transition-all">
-                        <span class="iconify" data-icon="lucide:menu" data-width="18"></span>
-                    </button>
-                </div>
-            </div>
-            <div id="mobileMenu" class="md:hidden hidden mt-2 nav-glass rounded-2xl p-4 space-y-1">
-                <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Nyumbani</a>
-                <a href="index.html#products" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Bidhaa</a>
-                <a href="gallery.html" class="block px-4 py-3 rounded-xl text-sm text-accent bg-accent-dim font-medium">Gallery</a>
-                <a href="index.html#calculator" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Kikokotoo</a>
-                <a href="index.html#contact" class="block px-4 py-3 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">Wasiliana</a>
-                <div class="pt-2 border-t border-border">
-                    <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent text-primary text-sm font-semibold">
-                        <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>
-                        WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ========== HERO ========== -->
-    <section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center pt-28 md:pt-32 pb-12 md:pb-16 overflow-hidden">
-        <div class="hero-glow" style="top: -10%; left: 20%;"></div>
-        <div class="hero-glow" style="bottom: -20%; right: 10%; opacity: 0.5;"></div>
-        <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 80px 80px;"></div>
-        <div class="relative z-10 max-w-[1100px] mx-auto px-4 md:px-6 text-center">
-            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white/[0.02] mb-8">
-                <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span>
-                <span class="text-[0.7rem] md:text-xs font-medium text-white/50 uppercase tracking-[0.2em]">Product Gallery</span>
-            </div>
-            <h1 class="reveal delay-1 font-display font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.95] mb-6">
-                <span class="block text-white/90">Bidhaa Zetu</span>
-                <span class="block gradient-text mt-2">Katika Picha</span>
-            </h1>
-            <p class="reveal delay-2 text-sm md:text-base text-white/40 max-w-lg mx-auto leading-relaxed mb-10">
-                Pitia mkusanyiko wa bidhaa zetu za hali ya juu — kamera za usalama, vyombo vya umeme, na zaidi.
-            </p>
-            <div class="reveal delay-3 flex items-center justify-center gap-8 md:gap-14">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="9">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Picha</div>
-                </div>
-                <div class="w-px h-10 bg-border"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="6">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Categories</div>
-                </div>
-                <div class="w-px h-10 bg-border"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="5">0</div>
-                    <div class="text-[0.65rem] text-white/30 uppercase tracking-[0.15em] mt-1">Brands</div>
-                </div>
-            </div>
-        </div>
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-            <span class="text-[0.6rem] uppercase tracking-[0.2em] text-white/40">Pita chini</span>
-            <span class="iconify text-white/40 animate-bounce" data-icon="lucide:chevron-down" data-width="16"></span>
-        </div>
-    </section>
-
-    <!-- ========== FILTERS ========== -->
-    <section class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 mb-8 md:mb-12">
-        <div class="reveal flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
-            <button class="filter-tab active" data-filter="all">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:grid-3x3" data-width="14"></span>
-                    Zote
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="cctv">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:camera" data-width="14"></span>
-                    CCTV
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="power">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:zap" data-width="14"></span>
-                    Power
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="cables">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:cable" data-width="14"></span>
-                    Cables
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="accessories">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:lock" data-width="14"></span>
-                    Accessories
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="grooming">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:scissors" data-width="14"></span>
-                    Grooming
-                </span>
-            </button>
-            <button class="filter-tab" data-filter="devices">
-                <span class="flex items-center gap-1.5">
-                    <span class="iconify" data-icon="lucide:smartphone" data-width="14"></span>
-                    Devices
-                </span>
-            </button>
-        </div>
-    </section>
-
-    <!-- ========== GALLERY ========== -->
-    <section class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 pb-20 md:pb-32">
-        <div id="galleryGrid" class="gallery-grid">
-
-            <!-- 1: Black CCTV (Featured) -->
-            <div class="gallery-card featured reveal delay-1" data-category="cctv" data-index="0" onclick="openLightbox(0)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/ef175a83-9155-4f4d-8dc7-c97304c41f31.jpeg?auth_key=1882481869-1a84e7d095db4fe4a3f8f58468e2d448-0-e7ed073317d17f789aaa0f7137adcc49" alt="Black CCTV Camera with IR" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-accent/10 border-accent/30 text-accent mb-2"><span class="iconify" data-icon="lucide:camera" data-width="10"></span>CCTV</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">Kamera ya Usalama — IR Bullet</h3>
-                            <p class="text-xs text-white/40 mt-1">Kamera nyeusi na mwelekeo wa kuweza kubadilishwa, taa za bluu za红外</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2: White CCTV -->
-            <div class="gallery-card reveal delay-2" data-category="cctv" data-index="1" onclick="openLightbox(1)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/c0f51c3c-210c-47fb-919e-66fd59482fb5.jpeg?auth_key=1882481869-d35187bf27ce437daf2de30106d8a968-0-6691473a63195e4a2f0d76e03c57ba1b" alt="White CCTV Camera" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-accent/10 border-accent/30 text-accent mb-2"><span class="iconify" data-icon="lucide:camera" data-width="10"></span>CCTV</div>
-                            <h3 class="font-display font-semibold text-base text-white">Kamera ya Usalama — Dome White</h3>
-                            <p class="text-xs text-white/40 mt-1">Kamera nyeupe na nyumba ya kinga, taa za红外</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3: Notebook Adapter -->
-            <div class="gallery-card reveal delay-3" data-category="power" data-index="2" onclick="openLightbox(2)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/2d5ac5b0-b016-4f47-9d84-6ac7712210e4.jpg?auth_key=1882481869-b6eb3f222eca45e1bf75e0be74406f2b-0-1f245c08bc98fe4e98a6bcf42f3db637" alt="IMRANOSTAR Notebook Power Adapter" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANOSTAR Notebook Adapter</h3>
-                            <p class="text-xs text-white/40 mt-1">Chaja ya laptop, inajumuisha viunganisho 8 vinavyobadilika</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4: AVR Boxes Wide (Featured) -->
-            <div class="gallery-card featured reveal delay-4" data-category="power" data-index="3" onclick="openLightbox(3)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/a89733e9-7b96-4e16-b1ab-becbfe939c50.jpg?auth_key=1882481869-cfba7f553e984bc0bd681cb6d75f1e7a-0-7b2b84ff0b256d9dbe270e3ba06d2a95" alt="IMRANOSTAR AVR Boxes" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">AVR — Automatic Voltage Regulator</h3>
-                            <p class="text-xs text-white/40 mt-1">Mifumo 4: 500VA, 1000VA, 1500VA, 2000VA — 110V/220V 50/60Hz</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5: AVR Close-up -->
-            <div class="gallery-card reveal delay-5" data-category="power" data-index="4" onclick="openLightbox(4)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/dd8ba7da-bb6e-4ca3-b9cf-d9ae4efd6a03.jpg?auth_key=1882481869-cb8918e3378d4aabbe7d6148fe2c3d23-0-fca30c71b4ffe4996b65ee54724b755c" alt="AVR Boxes Close-up" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-orange-500/10 border-orange-500/30 text-orange-400 mb-2"><span class="iconify" data-icon="lucide:zap" data-width="10"></span>Power</div>
-                            <h3 class="font-display font-semibold text-base text-white">AVR — Close-up View</h3>
-                            <p class="text-xs text-white/40 mt-1">Ukunjaji wa karibu wa boksi za AVR 0.5KVA - 2.0KVA</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6: Coaxial Cable (Featured) -->
-            <div class="gallery-card featured reveal delay-6" data-category="cables" data-index="5" onclick="openLightbox(5)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/124cc7f8-bc98-43e2-92e8-b2d6666be950.jpg?auth_key=1882481869-4d4e34c134cc4a2c908cc028e9a0d094-0-eea0f83e802c2385a1b736ba77579929" alt="IMRANOSTAR Coaxial Cable" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-blue-500/10 border-blue-500/30 text-blue-400 mb-2"><span class="iconify" data-icon="lucide:cable" data-width="10"></span>Cables</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">IMRANOSTAR Coaxial Cable — RG6U</h3>
-                            <p class="text-xs text-white/40 mt-1">Kabeli ya coaxial, 100Y urefu, 75 Ohms impedance</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7: Padlock (Tall) -->
-            <div class="gallery-card tall reveal delay-7" data-category="accessories" data-index="6" onclick="openLightbox(6)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/db6a1f34-cf71-4001-b713-1ba20abcf385.jpg?auth_key=1882481869-56447583557946dda5d28127fa049d84-0-ec11c889cc56fd93c4d1d809f64ede88" alt="IMRANO Padlock" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-purple-500/10 border-purple-500/30 text-purple-400 mb-2"><span class="iconify" data-icon="lucide:lock" data-width="10"></span>Accessories</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANO Padlock — SK366</h3>
-                            <p class="text-xs text-white/40 mt-1">Size 63mm, chuma, muundo wa kipekee</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8: Hairclipper -->
-            <div class="gallery-card reveal delay-8" data-category="grooming" data-index="7" onclick="openLightbox(7)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/9ef56e99-bd9e-4bbe-8a96-eaa42e7de870.jpg?auth_key=1882481869-61c6289469674b18bcf6402aa928229c-0-c3761dd73c5486664771c3ca5f6ff25c" alt="IMRANO Professional Hairclipper" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-green-500/10 border-green-500/30 text-green-400 mb-2"><span class="iconify" data-icon="lucide:scissors" data-width="10"></span>Grooming</div>
-                            <h3 class="font-display font-semibold text-base text-white">IMRANO Professional Hairclipper</h3>
-                            <p class="text-xs text-white/40 mt-1">Series 200/300, Waranti ya miaka 5</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 9: Smartphones & Tablets (Featured) -->
-            <div class="gallery-card featured reveal delay-9" data-category="devices" data-index="8" onclick="openLightbox(8)">
-                <div class="card-img-wrap">
-                    <img src="https://z-cdn-media.chatglm.cn/files/db5b21f7-7eff-4584-942d-99e402f02555.jpeg?auth_key=1882481869-5297f12b1a0c4de084bee30897043a59-0-712885dad40107af7fb1d37f91dfcc7b" alt="Smartphones and Tablets Display" loading="lazy">
-                    <div class="card-overlay">
-                        <div class="view-icon"><span class="iconify text-accent" data-icon="lucide:expand" data-width="22"></span></div>
-                        <div>
-                            <div class="cat-badge bg-cyan-500/10 border-cyan-500/30 text-cyan-400 mb-2"><span class="iconify" data-icon="lucide:smartphone" data-width="10"></span>Devices</div>
-                            <h3 class="font-display font-semibold text-base md:text-lg text-white">Smartphones & Tablets</h3>
-                            <p class="text-xs text-white/40 mt-1">Mkusanyiko wa simu na tablet za aina mbalimbali</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ========== CTA ========== -->
-    <section class="relative z-10 py-16 md:py-24">
-        <div class="max-w-[1400px] mx-auto px-4 md:px-6">
-            <div class="reveal relative rounded-2xl md:rounded-3xl border border-border overflow-hidden" style="background: linear-gradient(135deg, rgba(255,212,0,0.03) 0%, rgba(5,8,15,0.8) 50%, rgba(255,212,0,0.02) 100%);">
-                <div class="absolute top-0 right-0 w-80 h-80 rounded-full" style="background: radial-gradient(circle, rgba(255,212,0,0.05) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
-                <div class="relative z-10 py-16 md:py-24 px-6 md:px-16 text-center">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/20 bg-accent/5 mb-6">
-                        <span class="iconify text-accent" data-icon="lucide:sparkles" data-width="14"></span>
-                        <span class="text-[0.7rem] font-medium text-accent/80 uppercase tracking-[0.15em]">Interested?</span>
-                    </div>
-                    <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mb-4 text-white/90">
-                        Pata Bidhaa Hii <span class="gradient-text">Leo</span>
-                    </h2>
-                    <p class="text-sm md:text-base text-white/40 max-w-md mx-auto mb-8 leading-relaxed">
-                        Wasiliana nasi kupitia WhatsApp kwa bei nzuri na usafirishaji haraka.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://wa.me/255XXXXXXXXX?text=Napenda kuuliza kuhusu bidhaa zenu" target="_blank" class="flex items-center gap-2.5 px-8 py-4 rounded-full bg-accent text-primary text-sm font-semibold uppercase tracking-wider hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 30px -5px rgba(255,212,0,0.3);">
-                            <span class="iconify" data-icon="lucide:message-circle" data-width="18"></span>
-                            Omba Bei
-                        </a>
-                        <a href="index.html" class="flex items-center gap-2 px-8 py-4 rounded-full border border-border text-white/60 text-sm font-medium hover:border-border-light hover:text-white transition-all duration-300">
-                            <span class="iconify" data-icon="lucide:arrow-left" data-width="16"></span>
-                            Rudi Nyumbani
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="relative z-10 border-t border-border" style="background: linear-gradient(to bottom, #05080f, #020308);">
-        <div class="max-w-[1400px] mx-auto px-4 md:px-6 py-12 md:py-16">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-                <div>
-                    <a href="index.html" class="flex items-center gap-2.5 mb-4">
-                        <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
-                            <span class="text-primary font-display font-bold text-sm">IM</span>
-                        </div>
-                        <span class="font-display font-semibold text-base tracking-tight">Imrano<span class="text-accent">tech</span></span>
-                    </a>
-                    <p class="text-sm text-white/30 leading-relaxed max-w-xs">Suluhisho zako za teknolojia — CCTV, Solar, Power, na zaidi. Tunatenga bidhaa za hali ya juu kwa bei nafuu.</p>
-                </div>
-                <div>
-                    <h4 class="font-display font-semibold text-sm text-white/60 uppercase tracking-wider mb-4">Mkurasa</h4>
-                    <div class="space-y-2.5">
-                        <a href="index.html" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Nyumbani</a>
-                        <a href="index.html#products" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Bidhaa</a>
-                        <a href="gallery.html" class="block text-sm text-accent/70 hover:text-accent transition-colors duration-300">Gallery</a>
-                        <a href="index.html#calculator" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Kikokotoo cha Solar</a>
-                        <a href="index.html#contact" class="block text-sm text-white/30 hover:text-accent transition-colors duration-300">Wasiliana</a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-display font-semibold text-sm text-white/60 uppercase tracking-wider mb-4">Mawasiliano</h4>
-                    <div class="space-y-3">
-                        <a href="https://wa.me/255XXXXXXXXX" target="_blank" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>WhatsApp
-                        </a>
-                        <a href="mailto:info@imranotech.com" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>info@imranotech.com
-                        </a>
-                        <a href="https://github.com/" target="_blank" class="flex items-center gap-2.5 text-sm text-white/30 hover:text-accent transition-colors duration-300">
-                            <span class="iconify" data-icon="lucide:github" data-width="16"></span>GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-xs text-white/20">© 2025 Imranotech. Haki zote zimehifadhiwa.</p>
-                <p class="text-xs text-white/15">Imranostar International Corporation</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ========== LIGHTBOX ========== -->
-    <div id="lightbox" class="lightbox" onclick="closeLightboxOutside(event)">
-        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
-            <span class="iconify" data-icon="lucide:x" data-width="20"></span>
-        </button>
-        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous">
-            <span class="iconify" data-icon="lucide:chevron-left" data-width="20"></span>
-        </button>
-        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next">
-            <span class="iconify" data-icon="lucide:chevron-right" data-width="20"></span>
-        </button>
-        <img id="lightboxImg" src="" alt="Gallery Image">
-        <div class="lightbox-info">
-            <div id="lightboxBadge" class="cat-badge mb-2 mx-auto"></div>
-            <h3 id="lightboxTitle" class="font-display font-semibold text-lg md:text-xl text-white"></h3>
-            <p id="lightboxDesc" class="text-sm text-white/40 mt-1"></p>
-            <p id="lightboxCounter" class="text-xs text-white/20 mt-3"></p>
-        </div>
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="wh">IMRANO</span><span class="pk">TECH</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="index.html#solar-calc">Solar</a>
+      <a href="index.html#contact">Contact</a>
     </div>
+    <div class="nav-right">
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
 
-    <!-- ========== WHATSAPP FLOAT ========== -->
-    <a href="https://wa.me/255XXXXXXXXX?text=Napenda kuuliza kuhusu bidhaa zenu" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
+<!-- ===== GALLERY HERO ===== -->
+<div class="gal-hero">
+  <h1>Product <span>Gallery</span></h1>
+    <p>Browse our complete product catalog — CCTV, Solar, Power, Cables, Smartphones and more from Imranostar International Corporation.</p>
+    <div class="gal-count">📸 <span id="photoCount">9</span> Photos</div>
+</div>
 
-    <script src="script.js"></script>
+<!-- ===== FILTERS ===== -->
+<div class="filter-wrap">
+    <div class="filter-row">
+        <button class="ft active" data-f="all">All</button>
+        <button class="ft" data-f="cctv">📷 CCTV</button>
+        <button class="ft" data-f="power">⚡ Power</button>
+        <button class="ft" data-f="cables">🔗 Cables</button>
+        <button class="ft" data-f="acc">🔧 Accessories</button>
+        <button class="ft" data-f="groom">💈 Grooming</button>
+        <button class="ft" data-f="dev">📱 Devices</button>
+    </div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<section class="gal-sec">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div class="gal-grid" id="galGrid"></div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<div class="gal-cta">
+    <h2>Interested in a <span>Product?</span></h2>
+    <p>Contact us via WhatsApp for the best price and fast delivery across Tanzania.</p>
+    <div class="gal-cta-btns">
+        <a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I%20saw%20a%20product%20in%20your%20gallery%20and%20I'm%20interested" target="_blank" class="btn btn-pink">📲 &nbsp;Ask on WhatsApp</a>
+        <a href="index.html" class="btn btn-ghost">← &nbsp;Back to Home</a>
+    </div>
+    <a href="index.html" class="gal-back"><span>↑</span> Back to Home</a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="fg2">
+        <div class="fb">
+            <a href="index.html" class="logo" style="display:inline-flex"><span class="wh">IMRANO</span><span class="pk">TECH</span></a>
+            <p>Tanzania's trusted electronics and energy solutions brand. Serving from Mwanza for over 20 years.</p>
+            <div class="fso"><a href="#" class="fs2">FB</a><a href="#" class="fs2">IG</a><a href="#" class="fs2">TT</a><a href="#" class="fs2">X</a></div>
+        </div>
+        <div class="fcol"><h5>Products</h5><ul><li><a href="index.html#products">CCTV Cameras</a></li><li><a href="index.html#solar-calc">Solar Systems</a></li><li><a href="index.html#products">AVR Stabilizers</a></li><li><a href="index.html#products">Car Batteries</a></li><li><a href="index.html#products">Smartphones</a></li></ul></div>
+        <div class="fcol"><h5>Company</h5><ul><li><a href="index.html#about">About Us</a></li><li><a href="index.html#about">Our Brands</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+        <div class="fcol"><h5>Pages</h5><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html" style="color:var(--pink)">Gallery</a></li><li><a href="index.html#solar-calc">Solar Calculator</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+    </div>
+    <div class="fbot">
+        <p>© 2025 Imrano Electronics Tech Ltd. All rights reserved. | Mzambarauni, Lumumba, Mwanza</p>
+    </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
+    <button class="lb-close" onclick="closeLB()">✕</button>
+    <button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button>
+    <button class="lb-nav lb-next" onclick="navLB(1)">›</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-info">
+        <div class="lb-badge-sm" id="lbBadge"></div>
+        <h4 id="lbTitle"></h4>
+        <p id="lbDesc"></p>
+        <p class="lb-cnt" id="lbCnt"></p>
+    </div>
+</div>
+
+<!-- ===== WA FLOAT ===== -->
+<a href="https://wa.me/255698533107?text=Hello%20Imrano%20Tech%2C%20I'm%20interested%20in%20your%20products" class="waf" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp Us</span>
+</a>
+
+<script>
+// ===== DATA =====
+const D = [
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/ef175a83-9155-4f4d-8dc7-c97304c41f31.jpeg?auth_key=1882481869-1a84e7d095db4fe4a3f8f58468e2d448-0-e7ed073317d17f789aaa0f7137adcc49',
+        title: 'CCTV Camera — IR Bullet',
+        desc: 'Black IR bullet camera with adjustable mount and blue infrared LEDs for night vision surveillance.',
+        cat: 'cctv', badge: 'CCTV', bc: 'cctv', feat: true
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/c0f51c3c-210c-47fb-919e-66fd59482fb5.jpeg?auth_key=1882481869-d35187bf27ce437daf2de30106d8a968-0-6691473a63195e4a2f0d76e03c57ba1b',
+        title: 'CCTV Camera — Dome White',
+        desc: 'White dome camera with protective housing and infrared LED array for indoor/outdoor use.',
+        cat: 'cctv', badge: 'CCTV', bc: 'cctv', feat: false
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/2d5ac5b0-b016-4f47-9d84-6ac7712210e4.jpg?auth_key=1882481869-b6eb3f222eca45e1bf75e0be74406f2b-0-1f245c08bc98fe4e98a6bcf42f3db637',
+        title: 'IMRANOSTAR Notebook Power Adapter',
+        desc: 'Universal laptop charger with 8 interchangeable connector tips for all major brands.',
+        cat: 'power', badge: 'Power', bc: 'power', feat: false
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/a89733e9-7b96-4e16-b1ab-becbfe939c50.jpg?auth_key=1882481869-cfba7f553e984bc0bd681cb6d75f1e7a-0-7b2b84ff0b256d9dbe270e3ba06d2a95',
+        title: 'AVR Voltage Regulator — Full Range',
+        desc: 'Automatic Voltage Regulators: 500VA, 1000VA, 1500VA, 2000VA — 110V/220V 50/60Hz.',
+        cat: 'power', badge: 'Power', bc: 'power', feat: true
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/dd8ba7da-bb6e-4ca3-b9cf-d9ae4efd6a03.jpg?auth_key=1882481869-cb8918e3378d4aabbe7d6148fe2c3d23-0-fca30c71b4ffe4996b65ee54724b755c',
+        title: 'AVR Voltage Regulator — Close-up',
+        desc: 'Close-up view of Imranostar AVR boxes, 0.5KVA to 2.0KVA range.',
+        cat: 'power', badge: 'Power', bc: 'power', feat: false
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/124cc7f8-bc98-43e2-92e8-b2d6666be950.jpg?auth_key=1882481869-4d4e34c134cc4a2c908cc028e9a0d094-0-eea0f83e802c2385a1b736ba77579929',
+        title: 'IMRANOSTAR Coaxial Cable — RG6U',
+        desc: 'Professional grade coaxial cable, 100 yard length, 75 Ohms impedance for CCTV installations.',
+        cat: 'cables', badge: 'Cables', bc: 'cables', feat: true
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/db6a1f34-cf71-4001-b713-1ba20abcf385.jpg?auth_key=1882481869-56447583557946dda5d28127fa049d84-0-ec11c889cc56fd93c4d1d809f64ede88',
+        title: 'IMRANO Padlock — SK366',
+        desc: '63mm iron padlock with unique design, blister packaged. Art No: SK366.',
+        cat: 'acc', badge: 'Accessories', bc: 'acc', feat: false
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/9ef56e99-bd9e-4bbe-8a96-eaa42e7de870.jpg?auth_key=1882481869-61c6289469674b18bcf6402aa928229c-0-c3761dd73c5486664771c3ca5f6ff25c',
+        title: 'IMRANO Professional Hair Clipper',
+        desc: 'Series 200/300 professional hairclipper with 5-year warranty. Premium taper design.',
+        cat: 'groom', badge: 'Grooming', bc: 'groom', feat: false
+    },
+    {
+        src: 'https://z-cdn-media.chatglm.cn/files/db5b21f7-7eff-4584-942d-99e402f02555.jpeg?auth_key=1882481869-5297f12b1a0c4de084bee30897043a59-0-712885dad40107af7fb1d37f91dfcc7b',
+        title: 'Smartphones & Tablets Display',
+        desc: 'Assorted smartphones and tablets showcase — multiple brands and models available.',
+        cat: 'dev', badge: 'Devices', bc: 'dev', feat: true
+    }
+];
+
+let lbI = 0, lbF = D.map((_, i) => i);
+
+// ===== RENDER =====
+function render(f = 'all') {
+    const g = document.getElementById('galGrid');
+    g.innerHTML = '';
+    lbF = [];
+    D.forEach((item, i) => {
+        if (f !== 'all' && item.cat !== f) return;
+        lbF.push(i);
+        const c = document.createElement('div');
+        c.className = 'gc rev rev-d' + (lbF.length) + (item.feat ? ' feat' : '');
+        c.onclick = () => openLB(i);
+        c.innerHTML =
+            '<img src="' + item.src + '" alt="' + item.title + '" loading="lazy">' +
+            '<div class="gc-overlay">' +
+                '<div class="gc-expand">🔍</div>' +
+                '<span class="gc-badge ' + item.bc + '">' + item.badge + '</span>' +
+                '<h4>' + item.title + '</h4>' +
+                '<p>' + item.desc + '</p>' +
+            '</div>';
+        g.appendChild(c);
+    });
+    document.getElementById('photoCount').textContent = lbF.length;
+    if (!lbF.length) {
+        g.innerHTML = '<div class="no-res"><span>📭</span><p>No products in this category</p></div>';
+    }
+}
+
+// ===== FILTERS =====
+document.querySelectorAll('.ft').forEach(t => {
+    t.addEventListener('click', () => {
+        document.querySelectorAll('.ft').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        render(t.getAttribute('data-f'));
+    });
+});
+
+// ===== LIGHTBOX =====
+function openLB(i) {
+    lbI = lbF.indexOf(i);
+    if (lbI === -1) lbI = 0;
+    upLB();
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLB() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function navLB(d) {
+    lbI = (lbI + d + lbF.length) % lbF.length;
+    upLB();
+}
+function upLB() {
+    const item = D[lbF[lbI]];
+    document.getElementById('lbImg').src = item.src;
+    document.getElementById('lbImg').alt = item.title;
+    document.getElementById('lbTitle').textContent = item.title;
+    document.getElementById('lbDesc').textContent = item.desc;
+    document.getElementById('lbBadge').className = 'lb-badge-sm ' + item.bc;
+    document.getElementById('lbBadge').textContent = item.badge;
+    document.getElementById('lbCnt').textContent = (lbI + 1) + ' / ' + lbF.length;
+}
+
+// ===== KEYBOARD =====
+document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lb');
+    if (!lb || !lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowLeft') navLB(-1);
+    if (e.key === 'ArrowRight') navLB(1);
+});
+
+// ===== TOUCH SWIPE =====
+let tX = 0;
+const lbEl = document.getElementById('lb');
+lbEl.addEventListener('touchstart', e => { tX = e.changedTouches[0].screenX; }, { passive: true });
+lbEl.addEventListener('touchend', e => {
+    const d = tX - e.changedTouches[0].screenX;
+    if (Math.abs(d) > 50) navLB(d > 0 ? 1 : -1);
+}, { passive: true });
+
+// ===== NAV =====
+const burger = document.getElementById('burger');
+const nLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+    nLinks.classList.toggle('open');
+    const s = burger.querySelectorAll('span');
+    if (nLinks.classList.contains('open')) {
+        s[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        s[1].style.opacity = '0';
+        s[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+    } else {
+        s[0].style.transform = '';
+        s[1].style.opacity = '';
+        s[2].style.transform = '';
+    }
+});
+nLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nLinks.classList.remove('open')));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+// ===== SCROLL REVEAL =====
+const obs = new IntersectionObserver(en => {
+    en.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+// ===== INIT =====
+render();
+</script>
 </body>
 </html>
